@@ -13,7 +13,7 @@ public class Detection{
         this.distanceX = Math.abs(hitbox1.x - hitbox2.x);
         this.distanceY = Math.abs(hitbox1.y - hitbox2.y);
         float distance = (float) Math.sqrt((distanceX*distanceX)+(distanceY*distanceY));
-        if(distance + 15 <= hitbox1.radius+hitbox2.radius){
+        if(distance + 10 <= hitbox1.radius+hitbox2.radius){
             System.out.println("Collision detected");
             return true;
         }else{
