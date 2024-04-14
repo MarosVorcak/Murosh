@@ -6,11 +6,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.CircleMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Intersector;
 import com.mygdx.game.MainGame;
+import jdk.javadoc.internal.doclets.toolkit.taglets.snippet.MarkupParser;
 import logic.Detection;
+
+import java.awt.*;
 
 public class GameScreen implements Screen {
     private OrthographicCamera camera;
@@ -23,16 +33,20 @@ public class GameScreen implements Screen {
 
 
 
+
     public GameScreen(MainGame game) {
         this.game = game;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        player = new Player(new Texture("Archer_M_Big.png"),100,100,200,100,10);
-        goblin = new Goblin(new Texture("goblin.png"), 400, 400,100,10);
-        // Load tiled map
-        map = new TmxMapLoader().load("test.tmx");
+        map = new TmxMapLoader().load("Maps/spawn.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
-        detection = new Detection();
+        detection = new Detection(map);
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        player = new Player(new Texture("Archer_M_Big.png"),100,100,200,100,10, detection);
+        goblin = new Goblin(new Texture("goblin.png"), 400, 400,100,10, detection);
+
+
+
+
     }
     @Override
     public void show() {
@@ -49,16 +63,18 @@ public class GameScreen implements Screen {
         player.update(player);
         player.render(this.game.getBatch());
 
-        goblin.update(player);
-        goblin.render(this.game.getBatch());
+//        goblin.update(player);
+//        goblin.render(this.game.getBatch());
 
 
-//        System.out.println(Intersector.overlaps(this.player.getHitbox(),this.goblin.getHitbox()));
-        this.detection.detectCollision(this.player.getHitboxCircle(),this.goblin.getHitboxCircle());
+
         game.getBatch().end();
         this.player.getHitbox().render();
-        this.goblin.getHitbox().render();
+//        this.goblin.getHitbox().render();
     }
+
+
+
 
     @Override
     public void resize(int i, int i1) {

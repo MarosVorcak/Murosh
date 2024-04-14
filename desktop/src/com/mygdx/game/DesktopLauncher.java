@@ -8,10 +8,11 @@ import com.mygdx.game.MainGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setForegroundFPS(60);
+		config.setForegroundFPS(144);
 		config.setWindowedMode(1024,728);
 		config.setResizable(false);
 		config.setTitle("Semestralna praca - Murosh the Dungeon Conqueror");
-		new Lwjgl3Application(new MainGame(), config);
+		MainGame game = new MainGame();
+		new Lwjgl3Application(game, config);
 	}
 }

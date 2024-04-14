@@ -3,6 +3,7 @@ package characters;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
+import logic.Detection;
 import logic.Hitbox;
 
 public abstract class Character {
@@ -12,13 +13,16 @@ public abstract class Character {
     private Hitbox hitbox;
     private int hp;
     private int atk;
-    public Character(Texture texture, float x, float y, int hp, int atk) {
+    protected Detection detector;
+    public Character(Texture texture, float x, float y, int hp, int atk, Detection detector) {
         this.texture = texture;
         this.x = x;
         this.y = y;
         this.hp = hp;
         this.atk = atk;
         this.hitbox = new Hitbox(this.x+texture.getWidth()/2, this.y+texture.getHeight()/3,texture.getWidth()/3);
+        this.detector = detector;
+
     }
 
     public abstract void update(Player player);
@@ -26,14 +30,7 @@ public abstract class Character {
     public void render(SpriteBatch batch) {
         batch.draw(texture, x, y);
     }
-    public void takeDamage(int damage){
-        this.hp -= damage;
-        System.out.println("you took " + damage + " damage your hp is now " + hp);
-    }
 
-    public int getAtk() {
-        return atk;
-    }
 
     public Circle getHitboxCircle() {
         return this.hitbox.getCircle();
@@ -41,6 +38,22 @@ public abstract class Character {
 
     public Hitbox getHitbox() {
         return hitbox;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
     }
 }
 

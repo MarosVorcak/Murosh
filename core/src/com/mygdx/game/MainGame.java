@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import Screens.GameScreen;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainGame extends Game {
@@ -17,11 +18,13 @@ public class MainGame extends Game {
 
 	@Override
 	public void render () {
-		this.getScreen().render(1);
+		this.getScreen().render(Gdx.graphics.getDeltaTime());
     }
 
 
 	public SpriteBatch getBatch() {
 		return batch;
 	}
+
+
 }

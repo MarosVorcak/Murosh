@@ -1,0 +1,84 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "spawn.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Dungeon_Tileset32x32.tsx": {
+            "scaleInDock": 1
+        },
+        "atlas_floor- 32x32.tsx": {
+            "scaleInDock": 1
+        },
+        "spawn.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 418.66666666666663,
+                "y": 268
+            }
+        },
+        "tiles/Dungeon_Tileset.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "tiles/Dungeon_Tileset32x32.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tiles/atlas_floor- 32x32.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tiles/floors.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiles/spawn.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 419.9999999999999,
+                "y": 441.33333333333337
+            }
+        },
+        "tiles/wallsHigh.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "tiles/wallsLow.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/PC/Downloads/2D Pixel Dungeon Asset Pack/character and tileset",
+    "map.height": 23,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 32,
+    "openFiles": [
+        "spawn.tmx",
+        "tiles/Dungeon_Tileset32x32.tsx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "tiles/Dungeon_Tileset32x32.tsx",
+        "spawn.tmx",
+        "tiles/Dungeon_Tileset.tsx",
+        "tiles/atlas_floor- 32x32.tsx",
+        "tiles/wallsLow.tsx",
+        "tiles/wallsHigh.tsx",
+        "tiles/floors.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
+}
