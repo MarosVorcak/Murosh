@@ -20,22 +20,32 @@ public class Player extends Character{
         float oldY = this.y;
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             this.y += speed * Gdx.graphics.getDeltaTime();
-
+            if(detector.wallCollision(this.getHitboxRectangle())){
+                this.x = oldX;
+                this.y = oldY-5;
+            }
         }
         if(Gdx.input.isKeyPressed(Input.Keys.S)){
             this.y -= speed * Gdx.graphics.getDeltaTime();
-
+            if(detector.wallCollision(this.getHitboxRectangle())){
+                this.x = oldX;
+                this.y = oldY+5;
+            }
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D)){
             this.x += speed * Gdx.graphics.getDeltaTime();
+            if(detector.wallCollision(this.getHitboxRectangle())){
+                this.x = oldX-5;
+                this.y = oldY;
+            }
 
         }
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             this.x -= speed * Gdx.graphics.getDeltaTime();
-        }
-        if(detector.wallCollsion(this.getHitboxRectangle())){
-            this.x = oldX;
-            this.y = oldY;
+            if(detector.wallCollision(this.getHitboxRectangle())){
+                this.x = oldX+5;
+                this.y = oldY;
+            }
         }
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
     }

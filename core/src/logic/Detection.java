@@ -4,9 +4,6 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Detection{
@@ -15,18 +12,6 @@ public class Detection{
     public Detection(TiledMap map) {
         this.map = map;
         this.objects = map.getLayers().get("Collision").getObjects();
-    }
-    public boolean detectCollision(Circle hitbox1, Circle hitbox2){
-        float distanceX = Math.abs(hitbox1.x - hitbox2.x);
-        float distanceY = Math.abs(hitbox1.y - hitbox2.y);
-        float distance = (float) Math.sqrt((distanceX*distanceX)+(distanceY*distanceY));
-
-        if(distance + 10 <= hitbox1.radius+hitbox2.radius){
-            System.out.println("Collision detected");
-            return true;
-        }else{
-            return false;
-        }
     }
     public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
         float rect1HalfWidth = rect1.width / 2;
@@ -52,7 +37,7 @@ public class Detection{
         return distanceX < minDistanceX  && distanceY < minDistanceY;
     }
 
-    public boolean wallCollsion(Rectangle rectangle){
+    public boolean wallCollision(Rectangle rectangle){
         for (MapObject object : map.getLayers().get("Collision").getObjects()) {
             if (object instanceof RectangleMapObject) {
                 if (this.rectangleToRectangle(((RectangleMapObject) object).getRectangle(), rectangle)) {
