@@ -18,10 +18,8 @@ public class Enemy extends Character{
         float angleToPlayer = (float) Math.atan2(deltaY,deltaX);
         this.x += (float) (Math.cos(angleToPlayer) * 150 * Gdx.graphics.getDeltaTime());
         this.y += (float) (Math.sin(angleToPlayer) * 150 * Gdx.graphics.getDeltaTime());
-        this.getHitboxCircle().setPosition(this.x+texture.getWidth()/2, this.y+texture.getHeight()/3);
-//        if (detector.detectCollision(this.getHitboxCircle(),player.getHitboxCircle())){
-//            player.takeDamage(this.getAtk());
-//        }
+        this.getHitboxRectangle().setPosition(this.x+32,this.y);
+
     }
 
 }

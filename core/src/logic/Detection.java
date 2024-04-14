@@ -28,21 +28,37 @@ public class Detection{
             return false;
         }
     }
-    public boolean cirlceToRectngle(Rectangle rectangle, Circle circle){
-        float closestX = Math.max(rectangle.x, Math.min(circle.x, rectangle.x + rectangle.width));
-        float closestY = Math.max(rectangle.y, Math.min(circle.y, rectangle.y + rectangle.height));
+    public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
+        float rect1HalfWidth = rect1.width / 2;
+        float rect1HalfHeight = rect1.height / 2;
+        float rect2HalfWidth = rect2.width / 2;
+        float rect2HalfHeight = rect2.height / 2;
 
-        float distanceX = circle.x - closestX;
-        float distanceY = circle.y - closestY;
 
-        return (distanceX * distanceX + distanceY * distanceY) < (circle.radius * circle.radius);
+        float rect1CenterX = rect1.x + rect1HalfWidth;
+        float rect1CenterY = rect1.y + rect1HalfHeight;
+        float rect2CenterX = rect2.x + rect2HalfWidth;
+        float rect2CenterY = rect2.y + rect2HalfHeight;
+
+
+        float minDistanceX = rect1HalfWidth + rect2HalfWidth;
+        float minDistanceY = rect1HalfHeight + rect2HalfHeight;
+
+
+        float distanceX = Math.abs(rect1CenterX - rect2CenterX);
+        float distanceY = Math.abs(rect1CenterY - rect2CenterY);
+
+
+        return distanceX < minDistanceX  && distanceY < minDistanceY;
     }
 
-    public boolean wallCollsion(Circle circle){
-        for (MapObject object : map.getLayers().get("Collision").getObjects()){
-                if(object instanceof RectangleMapObject){
-                    return cirlceToRectngle(((RectangleMapObject) object).getRectangle(),circle);
+    public boolean wallCollsion(Rectangle rectangle){
+        for (MapObject object : map.getLayers().get("Collision").getObjects()) {
+            if (object instanceof RectangleMapObject) {
+                if (this.rectangleToRectangle(((RectangleMapObject) object).getRectangle(), rectangle)) {
+                    return true;
                 }
+            }
         }
         return false;
     }

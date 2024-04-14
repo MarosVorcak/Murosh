@@ -2,7 +2,7 @@ package characters;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 import logic.Detection;
 import logic.Hitbox;
 
@@ -20,7 +20,7 @@ public abstract class Character {
         this.y = y;
         this.hp = hp;
         this.atk = atk;
-        this.hitbox = new Hitbox(this.x+texture.getWidth()/2, this.y+texture.getHeight()/3,texture.getWidth()/3);
+        this.hitbox = new Hitbox(this.x+32,this.y,this.texture.getWidth()-64,this.texture.getHeight()-32);
         this.detector = detector;
 
     }
@@ -32,8 +32,8 @@ public abstract class Character {
     }
 
 
-    public Circle getHitboxCircle() {
-        return this.hitbox.getCircle();
+    public Rectangle getHitboxRectangle() {
+        return this.hitbox.getRectangle();
     }
 
     public Hitbox getHitbox() {

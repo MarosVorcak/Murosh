@@ -63,14 +63,16 @@ public class GameScreen implements Screen {
         player.update(player);
         player.render(this.game.getBatch());
 
-//        goblin.update(player);
-//        goblin.render(this.game.getBatch());
+        goblin.update(player);
+        goblin.render(this.game.getBatch());
 
 
 
         game.getBatch().end();
+
+        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(),this.goblin.getHitboxRectangle()));
         this.player.getHitbox().render();
-//        this.goblin.getHitbox().render();
+        this.goblin.getHitbox().render();
     }
 
 
