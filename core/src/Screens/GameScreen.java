@@ -1,26 +1,16 @@
 package Screens;
 
-import characters.Goblin;
-import characters.Player;
+import entities.Goblin;
+import entities.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.CircleMapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Intersector;
 import com.mygdx.game.MainGame;
-import jdk.javadoc.internal.doclets.toolkit.taglets.snippet.MarkupParser;
 import logic.Detection;
-
-import java.awt.*;
 
 public class GameScreen implements Screen {
     private OrthographicCamera camera;
@@ -58,6 +48,7 @@ public class GameScreen implements Screen {
 
         player.update(this.player, deltaTime);
         player.render(this.game.getBatch());
+        player.shoot(deltaTime,this.game.getBatch());
 
 //        goblin.update(player, deltaTime);
 //        goblin.render(this.game.getBatch());
@@ -68,7 +59,7 @@ public class GameScreen implements Screen {
 
 //        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(),this.goblin.getHitboxRectangle()));
         this.player.getHitbox().render();
-        this.player.shoot(deltaTime,this.game.getBatch());
+        this.player.getArrowManager().renderArrowHitboxes();
 //        this.goblin.getHitbox().render();
     }
 

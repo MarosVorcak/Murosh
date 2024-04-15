@@ -1,4 +1,4 @@
-package characters;
+package entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import logic.Detection;
