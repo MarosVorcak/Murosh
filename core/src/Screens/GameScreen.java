@@ -59,8 +59,8 @@ public class GameScreen implements Screen {
         player.update(this.player, deltaTime);
         player.render(this.game.getBatch());
 
-        goblin.update(player, deltaTime);
-        goblin.render(this.game.getBatch());
+//        goblin.update(player, deltaTime);
+//        goblin.render(this.game.getBatch());
 
 
 
@@ -68,7 +68,8 @@ public class GameScreen implements Screen {
 
 //        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(),this.goblin.getHitboxRectangle()));
         this.player.getHitbox().render();
-        this.goblin.getHitbox().render();
+        this.player.shoot(deltaTime,this.game.getBatch());
+//        this.goblin.getHitbox().render();
     }
 
 

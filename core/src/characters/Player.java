@@ -3,6 +3,8 @@ package characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import logic.Arrow;
 import logic.Detection;
 
 public class Player extends Character{
@@ -48,6 +50,13 @@ public class Player extends Character{
             }
         }
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
+    }
+    public void shoot(float deltaTime, SpriteBatch batch){
+        if(Gdx.input.isButtonJustPressed(Input.Keys.RIGHT)){
+            Arrow arrow = new Arrow(this.x+this.texture.getWidth(),this.y+this.texture.getHeight()/2,this.detector);
+            arrow.update(deltaTime);
+            arrow.render(batch);
+        }
     }
 
 }
