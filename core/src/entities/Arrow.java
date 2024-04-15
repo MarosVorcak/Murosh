@@ -10,13 +10,14 @@ public class Arrow {
     private static final float SPEED = 200;
     private Hitbox hitbox;
     private Texture texture;
-    private boolean remove;
+    private float lifeTime;
+
 
     public Arrow(float x, float y, Texture texture) {
         this.x = x;
         this.y = y;
-        this.remove = false;
         this.texture = texture;
+        this.lifeTime = 0;
         this.hitbox = new Hitbox(this.x,this.y,this.texture.getWidth(),this.texture.getHeight());
     }
 
@@ -41,16 +42,16 @@ public class Arrow {
         batch.draw(this.texture,this.x,this.y);
     }
 
+    public void addLifeTime(float lifeTime) {
+        this.lifeTime += lifeTime;
+    }
+
+    public float getLifeTime() {
+        return lifeTime;
+    }
+
     public Hitbox getHitbox() {
         return this.hitbox;
-    }
-
-    public boolean isRemove() {
-        return remove;
-    }
-
-    public void setRemove(boolean remove) {
-        this.remove = remove;
     }
 
     public float getX() {
