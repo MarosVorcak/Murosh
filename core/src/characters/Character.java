@@ -25,7 +25,7 @@ public abstract class Character {
 
     }
 
-    public abstract void update(Player player);
+    public abstract void update(Player player, float deltaTime);
 
     public void render(SpriteBatch batch) {
         batch.draw(texture, x, y);

@@ -43,28 +43,24 @@ public class GameScreen implements Screen {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         player = new Player(new Texture("Archer_M_Big.png"),100,100,200,100,10, detection);
         goblin = new Goblin(new Texture("goblin.png"), 400, 400,100,10, detection);
-
-
-
-
     }
     @Override
     public void show() {
     }
 
     @Override
-    public void render(float v) {
+    public void render(float deltaTime) {
         mapRenderer.setView(camera);
         mapRenderer.render();
 
         game.getBatch().begin();
 
 
-        player.update(player);
+        player.update(this.player, deltaTime);
         player.render(this.game.getBatch());
 
-//        goblin.update(player);
-//        goblin.render(this.game.getBatch());
+        goblin.update(player, deltaTime);
+        goblin.render(this.game.getBatch());
 
 
 
@@ -72,7 +68,7 @@ public class GameScreen implements Screen {
 
 //        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(),this.goblin.getHitboxRectangle()));
         this.player.getHitbox().render();
-//        this.goblin.getHitbox().render();
+        this.goblin.getHitbox().render();
     }
 
 

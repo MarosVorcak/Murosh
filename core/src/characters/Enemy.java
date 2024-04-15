@@ -12,12 +12,12 @@ public class Enemy extends Character{
     }
 
     @Override
-    public void update(Player player) {
+    public void update(Player player, float deltaTime) {
         float deltaX = player.x - this.x;
         float deltaY = player.y - this.y;
         float angleToPlayer = (float) Math.atan2(deltaY,deltaX);
-        this.x += (float) (Math.cos(angleToPlayer) * 150 * Gdx.graphics.getDeltaTime());
-        this.y += (float) (Math.sin(angleToPlayer) * 150 * Gdx.graphics.getDeltaTime());
+        this.x += (float) (Math.cos(angleToPlayer) * 150 * deltaTime);
+        this.y += (float) (Math.sin(angleToPlayer) * 150 * deltaTime);
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
 
     }

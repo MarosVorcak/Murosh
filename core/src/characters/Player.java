@@ -15,25 +15,25 @@ public class Player extends Character{
     }
 
     @Override
-    public void update(Player player) {
+    public void update(Player player, float deltaTime) {
         float oldX = this.x;
         float oldY = this.y;
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            this.y += speed * Gdx.graphics.getDeltaTime();
+            this.y += speed * deltaTime;
             if(detector.wallCollision(this.getHitboxRectangle())){
                 this.x = oldX;
                 this.y = oldY-5;
             }
         }
         if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            this.y -= speed * Gdx.graphics.getDeltaTime();
+            this.y -= speed * deltaTime;
             if(detector.wallCollision(this.getHitboxRectangle())){
                 this.x = oldX;
                 this.y = oldY+5;
             }
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            this.x += speed * Gdx.graphics.getDeltaTime();
+            this.x += speed * deltaTime;
             if(detector.wallCollision(this.getHitboxRectangle())){
                 this.x = oldX-5;
                 this.y = oldY;
@@ -41,7 +41,7 @@ public class Player extends Character{
 
         }
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            this.x -= speed * Gdx.graphics.getDeltaTime();
+            this.x -= speed * deltaTime;
             if(detector.wallCollision(this.getHitboxRectangle())){
                 this.x = oldX+5;
                 this.y = oldY;
