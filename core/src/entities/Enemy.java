@@ -1,10 +1,9 @@
-package characters;
+package entities;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import logic.Detection;
 
-public class Enemy extends Character{
+public class Enemy extends Entity {
     private Detection detector;
     public Enemy(Texture texture, float x, float y, int hp, int atk, Detection detector) {
         super(texture, x, y, hp, atk, detector);

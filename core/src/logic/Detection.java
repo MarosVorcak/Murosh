@@ -8,10 +8,9 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Detection{
     private TiledMap map;
-    private MapObjects objects;
+
     public Detection(TiledMap map) {
         this.map = map;
-        this.objects = map.getLayers().get("Collision").getObjects();
     }
     public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
         float rect1HalfWidth = rect1.width / 2;
