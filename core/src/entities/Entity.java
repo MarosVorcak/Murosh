@@ -27,6 +27,14 @@ public abstract class Entity {
 
     public abstract void update(Player player, float deltaTime);
 
+    public void takeDMG(float dmg){
+        this.hp -= dmg;
+    }
+
+    public boolean isAlive(){
+        return (this.hp>0);
+    }
+
     public void render(SpriteBatch batch) {
         batch.draw(texture, x, y);
     }

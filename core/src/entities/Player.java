@@ -7,9 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import logic.ArrowManager;
 import logic.Detection;
 
+import java.util.ArrayList;
+
 public class Player extends Entity {
     private int speed;
-    private ArrowManager arrowManager;
+    private final ArrowManager arrowManager;
 
     public Player(Texture texture, float x, float y, int speed, int hp, int atk, Detection detector) {
         super(texture, x, y, hp, atk, detector);
@@ -53,7 +55,7 @@ public class Player extends Entity {
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
     }
 
-    public void shoot(float deltaTime, SpriteBatch batch){
+    public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities){
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             this.arrowManager.shootArrows(deltaTime,'R',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
         }
@@ -66,7 +68,7 @@ public class Player extends Entity {
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             this.arrowManager.shootArrows(deltaTime,'D',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
         }
-        this.arrowManager.updateAndRenderArrows(deltaTime,batch);
+        this.arrowManager.updateAndRenderArrows(deltaTime,batch,entities);
     }
 
 

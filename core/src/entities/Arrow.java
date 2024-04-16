@@ -11,18 +11,20 @@ public class Arrow {
     private Hitbox hitbox;
     private Texture texture;
     private float lifeTime;
+    private char direction;
 
 
-    public Arrow(float x, float y, Texture texture) {
+    public Arrow(float x, float y, Texture texture, char direction) {
         this.x = x;
         this.y = y;
         this.texture = texture;
         this.lifeTime = 0;
         this.hitbox = new Hitbox(this.x,this.y,this.texture.getWidth(),this.texture.getHeight());
+        this.direction = direction;
     }
 
-    public void update(float deltaTime,char direction){
-        switch (direction){
+    public void update(float deltaTime){
+        switch (this.direction){
             case 'U':
                 this.y += SPEED * deltaTime;
                 break;
