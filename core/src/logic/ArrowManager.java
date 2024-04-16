@@ -13,7 +13,7 @@ public class ArrowManager {
     private float betweenShotTimer;
     private float arrowLifeTimer;
     private char arrowDirect;
-    public static final float TIME_BETWEEN_SHOTS = 1;
+    public static final float TIME_BETWEEN_SHOTS = 0.8f;
     public static final float ARROW_LIFE_TIME = 2;
 
 
@@ -36,7 +36,7 @@ public class ArrowManager {
             case 'D':
                 if(betweenShotTimer>=TIME_BETWEEN_SHOTS){
                     this.betweenShotTimer=0;
-                    this.arrows.add(new Arrow(playerX-playerHeigth/2,playerY-playerWidth/2,this.createTexture(direction)));
+                    this.arrows.add(new Arrow(playerX+playerHeigth/2,playerY,this.createTexture(direction)));
                 }
                 break;
             case 'R':
@@ -49,13 +49,12 @@ public class ArrowManager {
             case 'L':
                 if(betweenShotTimer>=TIME_BETWEEN_SHOTS){
                     this.betweenShotTimer=0;
-                    this.arrows.add(new Arrow(playerX-playerHeigth/2,playerY-playerWidth/4,this.createTexture(direction)));
+                    this.arrows.add(new Arrow(playerX,playerY+playerWidth/4,this.createTexture(direction)));
                 }
 
                 break;
 
         }
-        this.updateAndRenderArrows(deltaTime,batch);
     }
 
     public void updateAndRenderArrows(float deltaTime,SpriteBatch batch){

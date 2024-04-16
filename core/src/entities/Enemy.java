@@ -18,7 +18,6 @@ public class Enemy extends Entity {
         this.x += (float) (Math.cos(angleToPlayer) * 150 * deltaTime);
         this.y += (float) (Math.sin(angleToPlayer) * 150 * deltaTime);
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
-
     }
 
 }
