@@ -50,6 +50,8 @@ public class GameScreen implements Screen {
         player.render(this.game.getBatch());
         player.shoot(deltaTime,this.game.getBatch());
 
+
+
 //        goblin.update(player, deltaTime);
 //        goblin.render(this.game.getBatch());
 

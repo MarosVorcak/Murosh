@@ -12,6 +12,7 @@ public class ArrowManager {
     private Detection detector;
     private float betweenShotTimer;
     private float arrowLifeTimer;
+    private char arrowDirect;
     public static final float TIME_BETWEEN_SHOTS = 1;
     public static final float ARROW_LIFE_TIME = 2;
 
@@ -24,10 +25,7 @@ public class ArrowManager {
     }
     public void shootArrows(float deltaTime, char direction, float playerWidth, float playerHeigth, float playerX, float playerY, SpriteBatch batch){
         this.betweenShotTimer += deltaTime;
-        this.arrowLifeTimer += deltaTime;
-        if(arrowLifeTimer > ARROW_LIFE_TIME){
-            this.arrowLifeTimer = 0;
-        }
+        this.arrowDirect = direction;
         switch (direction){
             case 'U':
                 if(betweenShotTimer>=TIME_BETWEEN_SHOTS){
@@ -46,7 +44,7 @@ public class ArrowManager {
                     this.betweenShotTimer=0;
                     this.arrows.add(new Arrow(playerX+playerHeigth/2,playerY+playerWidth/4,this.createTexture(direction)));
                 }
-                this.updateAndRenderArrows(deltaTime,direction,batch);
+
                 break;
             case 'L':
                 if(betweenShotTimer>=TIME_BETWEEN_SHOTS){
@@ -57,13 +55,15 @@ public class ArrowManager {
                 break;
 
         }
+        this.updateAndRenderArrows(deltaTime,batch);
     }
-    private void updateAndRenderArrows(float deltaTime,char direction,SpriteBatch batch){
+
+    public void updateAndRenderArrows(float deltaTime,SpriteBatch batch){
         Iterator<Arrow> iterator = arrows.iterator();
         while (iterator.hasNext()){
             Arrow arrow = iterator.next();
             arrow.addLifeTime(deltaTime);
-            arrow.update(deltaTime,direction);
+            arrow.update(deltaTime,this.arrowDirect);
             arrow.getHitbox().getRectangle().setPosition(arrow.getX(),arrow.getY());
             arrow.render(batch);
             if(arrow.getLifeTime()>=ARROW_LIFE_TIME || detector.wallCollision(arrow.getHitbox().getRectangle())){
@@ -72,27 +72,14 @@ public class ArrowManager {
         }
     }
 
+
     public void renderArrowHitboxes(){
         for (Arrow arrow : arrows) {
             arrow.getHitbox().render();
         }
     }
     private Texture createTexture(char direction){
-        Texture texture = null;
-        switch (direction){
-            case 'U':
-                texture = new Texture("projectiles/arrows/arrow_U.png");
-                break;
-            case 'D':
-                texture = new Texture("projectiles/arrows/arrow_D.png");
-                break;
-            case 'R':
-                texture = new Texture("projectiles/arrows/arrow_R.png");
-                break;
-            case 'L':
-                texture = new Texture("projectiles/arrows/arrow_L.png");
-                break;
-        }
-        return texture;
+        String path = "projectiles/arrows/arrow_"+direction+".png";
+        return new Texture(path);
     }
 }

@@ -52,6 +52,7 @@ public class Player extends Entity {
         }
         this.getHitboxRectangle().setPosition(this.x+32,this.y);
     }
+
     public void shoot(float deltaTime, SpriteBatch batch){
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             this.arrowManager.shootArrows(deltaTime,'R',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
@@ -65,8 +66,9 @@ public class Player extends Entity {
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             this.arrowManager.shootArrows(deltaTime,'D',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
         }
-
+        this.arrowManager.updateAndRenderArrows(deltaTime,batch);
     }
+
 
     public ArrowManager getArrowManager() {
         return arrowManager;
