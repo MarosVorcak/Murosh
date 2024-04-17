@@ -1,4 +1,4 @@
-package screens;
+package Screens;
 
 import entities.Entity;
 import entities.Goblin;
@@ -36,8 +36,8 @@ public class GameScreen implements Screen {
         this.detection = new Detection(this.map);
         this.entities = new ArrayList<Entity>();
         this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        this.player = new Player(new Texture("Archer_M_Big.png"), 100, 100, 200, 100, 10, this.detection);
-        this.goblin = new Goblin(new Texture("goblin.png"), 400, 400, 100, 10, this.detection);
+        this.player = new Player(new Texture("Archer_M_Big.png"), 100, 100,  100, 10, this.detection, 200);
+        this.goblin = new Goblin(new Texture("goblin.png"), 400, 400, 100, 10, this.detection, 100);
         this.entities.add(this.goblin);
     }
     @Override
@@ -67,9 +67,9 @@ public class GameScreen implements Screen {
         this.game.getBatch().end();
 
         System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(), this.goblin.getHitboxRectangle()));
-        this.player.getHitbox().render();
-        this.player.getArrowManager().renderArrowHitboxes();
-        this.goblin.getHitbox().render();
+//        this.player.getHitbox().render();
+//        this.player.getArrowManager().renderArrowHitboxes();
+//        this.goblin.getHitbox().render();
     }
 
 

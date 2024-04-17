@@ -10,67 +10,71 @@ import logic.Detection;
 import java.util.ArrayList;
 
 public class Player extends Entity {
-    private int speed;
     private final ArrowManager arrowManager;
-
-    public Player(Texture texture, float x, float y, int speed, int hp, int atk, Detection detector) {
-        super(texture, x, y, hp, atk, detector);
-        this.speed = speed;
+    private static final float INVINCIBLITY_TIME = 0.67f;
+    private float timeBetweenHits;
+    public Player(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
+        super(texture, x, y, hp, atk, detector, speed);
         this.arrowManager = new ArrowManager(detector);
+        this.timeBetweenHits = 0;
     }
 
     @Override
     public void update(Player player, float deltaTime) {
-        float oldX = this.x;
-        float oldY = this.y;
+        float oldX = this.getX();
+        float oldY = this.getY();
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            this.y += this.speed * deltaTime;
-            if (this.detector.wallCollision(this.getHitboxRectangle())) {
-                this.x = oldX;
-                this.y = oldY - 5;
+            this.setY(oldY + this.getSpeed() * deltaTime);
+            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
+                this.setX(oldX);
+                this.setY(oldY - 5);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            this.y -= this.speed * deltaTime;
-            if (this.detector.wallCollision(this.getHitboxRectangle())) {
-                this.x = oldX;
-                this.y = oldY + 5;
+            this.setY(oldY - (this.getSpeed() * deltaTime));
+            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
+                this.setX(oldX);
+                this.setY(oldY + 5);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            this.x += this.speed * deltaTime;
-            if (this.detector.wallCollision(this.getHitboxRectangle())) {
-                this.x = oldX - 5;
-                this.y = oldY;
+            this.setX(oldX + this.getSpeed() * deltaTime);
+            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
+                this.setX(oldX - 5);
+                this.setY(oldY);
             }
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            this.x -= this.speed * deltaTime;
-            if (this.detector.wallCollision(this.getHitboxRectangle())) {
-                this.x = oldX + 5;
-                this.y = oldY;
+            this.setX(oldX - (this.getSpeed() * deltaTime));
+            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
+                this.setX(oldX + 5);
+                this.setY(oldY);
             }
         }
-        this.getHitboxRectangle().setPosition(this.x + 32, this.y);
+        this.getHitboxRectangle().setPosition(this.getX() + 32, this.getY());
+    }
+
+    @Override
+    public void takeDMG(float dmg) {
+
     }
 
     public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            this.arrowManager.shootArrows(deltaTime, 'R', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
+            this.arrowManager.shootArrows(deltaTime, 'R', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            this.arrowManager.shootArrows(deltaTime, 'L', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
+            this.arrowManager.shootArrows(deltaTime, 'L', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            this.arrowManager.shootArrows(deltaTime, 'U', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
+            this.arrowManager.shootArrows(deltaTime, 'U', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            this.arrowManager.shootArrows(deltaTime, 'D', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
+            this.arrowManager.shootArrows(deltaTime, 'D', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
         this.arrowManager.updateAndRenderArrows(deltaTime, batch, entities);
     }
-
 
     public ArrowManager getArrowManager() {
         return this.arrowManager;

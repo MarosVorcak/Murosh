@@ -8,10 +8,10 @@ public class Arrow {
     private float x;
     private float y;
     private static final float SPEED = 200;
-    private Hitbox hitbox;
-    private Texture texture;
+    private final Hitbox hitbox;
+    private final Texture texture;
     private float lifeTime;
-    private char direction;
+    private final char direction;
 
 
     public Arrow(float x, float y, Texture texture, char direction) {
@@ -19,7 +19,7 @@ public class Arrow {
         this.y = y;
         this.texture = texture;
         this.lifeTime = 0;
-        this.hitbox = new Hitbox(this.x , this.y , this.texture.getWidth() , this.texture.getHeight());
+        this.hitbox = new Hitbox(this.x, this.y, this.texture.getWidth(), this.texture.getHeight());
         this.direction = direction;
     }
 
@@ -41,7 +41,7 @@ public class Arrow {
         }
     }
     public void render(SpriteBatch batch) {
-        batch.draw(this.texture , this.x , this.y);
+        batch.draw(this.texture, this.x, this.y);
     }
 
     public void addLifeTime(float lifeTime) {
@@ -62,5 +62,9 @@ public class Arrow {
 
     public float getY() {
         return this.y;
+    }
+
+    public char getDirection() {
+        return this.direction;
     }
 }

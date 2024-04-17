@@ -23,33 +23,33 @@ public class ArrowManager {
         this.detector = detector;
         this.betweenShotTimer = 1;
     }
-    public void shootArrows(float deltaTime, char direction, float playerWidth, float playerHeigth, float playerX, float playerY, SpriteBatch batch) {
+    public void shootArrows(float deltaTime, char direction, float playerSize, float playerX, float playerY, SpriteBatch batch) {
         this.betweenShotTimer += deltaTime;
         this.arrowDirect = direction;
         switch (direction) {
             case 'U':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerHeigth / 2, playerY + playerWidth / 2, this.createTexture(direction), direction));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2 , playerY + playerSize / 2 , this.createTexture(direction), direction));
                 }
                 break;
             case 'D':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerHeigth / 2, playerY, this.createTexture(direction), direction));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY, this.createTexture(direction), direction));
                 }
                 break;
             case 'R':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerHeigth / 2, playerY + playerWidth / 4, this.createTexture(direction), direction));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY + playerSize / 4, this.createTexture(direction), direction));
                 }
 
                 break;
             case 'L':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX, playerY + playerWidth / 4, this.createTexture(direction), direction));
+                    this.arrows.add(new Arrow(playerX, playerY + playerSize / 4, this.createTexture(direction), direction));
                 }
 
                 break;

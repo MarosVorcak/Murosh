@@ -7,14 +7,15 @@ import logic.Detection;
 import logic.Hitbox;
 
 public abstract class Entity {
-    protected Texture texture;
-    protected float x;
-    protected float y;
-    private Hitbox hitbox;
+    private final Texture texture;
+    private float x;
+    private float y;
+    private final Hitbox hitbox;
     private int hp;
     private int atk;
-    protected Detection detector;
-    public Entity(Texture texture, float x, float y, int hp, int atk, Detection detector) {
+    private final Detection detector;
+    private int speed;
+    public Entity(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
         this.texture = texture;
         this.x = x;
         this.y = y;
@@ -22,14 +23,14 @@ public abstract class Entity {
         this.atk = atk;
         this.hitbox = new Hitbox(this.x + 32, this.y, this.texture.getWidth() - 64, this.texture.getHeight() - 32);
         this.detector = detector;
+        this.speed = speed;
 
     }
 
     public abstract void update(Player player, float deltaTime);
 
-    public void takeDMG(float dmg) {
-        this.hp -= (int)dmg;
-    }
+    public abstract void takeDMG(float dmg);
+
 
     public boolean isAlive() {
         return (this.hp > 0);
@@ -44,10 +45,37 @@ public abstract class Entity {
         return this.hitbox.getRectangle();
     }
 
+    public Texture getTexture() {
+        return this.texture;
+    }
+
+    public float getX() {
+        return this.x;
+    }
+
+    public float getY() {
+        return this.y;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public Detection getDetector() {
+        return this.detector;
+    }
+
     public Hitbox getHitbox() {
         return this.hitbox;
     }
 
+    public int getSpeed() {
+        return this.speed;
+    }
 }
 
 
