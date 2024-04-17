@@ -1,12 +1,11 @@
 package logic;
 
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Detection{
+public class Detection {
     private TiledMap map;
 
     public Detection(TiledMap map) {
@@ -36,10 +35,10 @@ public class Detection{
         return distanceX < minDistanceX  && distanceY < minDistanceY;
     }
 
-    public boolean wallCollision(Rectangle rectangle){
-        for (MapObject object : map.getLayers().get("Collision").getObjects()) {
+    public boolean wallCollision(Rectangle rectangle) {
+        for (MapObject object : this.map.getLayers().get("Collision").getObjects()) {
             if (object instanceof RectangleMapObject) {
-                if (this.rectangleToRectangle(((RectangleMapObject) object).getRectangle(), rectangle)) {
+                if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
                     return true;
                 }
             }

@@ -1,4 +1,4 @@
-package Screens;
+package screens;
 
 import entities.Entity;
 import entities.Goblin;
@@ -30,15 +30,15 @@ public class GameScreen implements Screen {
 
     public GameScreen(MainGame game) {
         this.game = game;
-        camera = new OrthographicCamera();
-        map = new TmxMapLoader().load("Maps/spawn.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map);
-        detection = new Detection(map);
+        this.camera = new OrthographicCamera();
+        this.map = new TmxMapLoader().load("Maps/spawn.tmx");
+        this.mapRenderer = new OrthogonalTiledMapRenderer(this.map);
+        this.detection = new Detection(this.map);
         this.entities = new ArrayList<Entity>();
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        player = new Player(new Texture("Archer_M_Big.png"),100,100,200,100,10, detection);
-        goblin = new Goblin(new Texture("goblin.png"), 400, 400,100,10, detection);
-        this.entities.add(goblin);
+        this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.player = new Player(new Texture("Archer_M_Big.png"), 100, 100, 200, 100, 10, this.detection);
+        this.goblin = new Goblin(new Texture("goblin.png"), 400, 400, 100, 10, this.detection);
+        this.entities.add(this.goblin);
     }
     @Override
     public void show() {
@@ -46,30 +46,30 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float deltaTime) {
-        mapRenderer.setView(camera);
-        mapRenderer.render();
+        this.mapRenderer.setView(this.camera);
+        this.mapRenderer.render();
 
-        game.getBatch().begin();
+        this.game.getBatch().begin();
 
 
-        player.update(this.player, deltaTime);
-        player.render(this.game.getBatch());
-        player.shoot(deltaTime,this.game.getBatch(),this.entities);
+        this.player.update(this.player, deltaTime);
+        this.player.render(this.game.getBatch());
+        this.player.shoot(deltaTime, this.game.getBatch(), this.entities);
         Iterator<Entity> iterator = this.entities.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Entity entity = iterator.next();
-            entity.update(this.player,deltaTime);
+            entity.update(this.player, deltaTime);
             entity.render(this.game.getBatch());
-            if(!entity.isAlive()){
+            if (!entity.isAlive()) {
                 iterator.remove();
             }
         }
-        game.getBatch().end();
+        this.game.getBatch().end();
 
-        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(),this.goblin.getHitboxRectangle()));
-//        this.player.getHitbox().render();
-//        this.player.getArrowManager().renderArrowHitboxes();
-//        this.goblin.getHitbox().render();
+        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(), this.goblin.getHitboxRectangle()));
+        this.player.getHitbox().render();
+        this.player.getArrowManager().renderArrowHitboxes();
+        this.goblin.getHitbox().render();
     }
 
 
@@ -97,6 +97,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        game.getBatch().dispose();
+        this.game.getBatch().dispose();
     }
 }

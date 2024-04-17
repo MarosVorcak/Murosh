@@ -20,23 +20,23 @@ public abstract class Entity {
         this.y = y;
         this.hp = hp;
         this.atk = atk;
-        this.hitbox = new Hitbox(this.x+32,this.y,this.texture.getWidth()-64,this.texture.getHeight()-32);
+        this.hitbox = new Hitbox(this.x + 32, this.y, this.texture.getWidth() - 64, this.texture.getHeight() - 32);
         this.detector = detector;
 
     }
 
     public abstract void update(Player player, float deltaTime);
 
-    public void takeDMG(float dmg){
-        this.hp -= dmg;
+    public void takeDMG(float dmg) {
+        this.hp -= (int)dmg;
     }
 
-    public boolean isAlive(){
-        return (this.hp>0);
+    public boolean isAlive() {
+        return (this.hp > 0);
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(texture, x, y);
+        batch.draw(this.texture, this.x, this.y);
     }
 
 
@@ -45,7 +45,7 @@ public abstract class Entity {
     }
 
     public Hitbox getHitbox() {
-        return hitbox;
+        return this.hitbox;
     }
 
 }

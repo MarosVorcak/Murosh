@@ -23,56 +23,56 @@ public class Player extends Entity {
     public void update(Player player, float deltaTime) {
         float oldX = this.x;
         float oldY = this.y;
-        if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            this.y += speed * deltaTime;
-            if(this.detector.wallCollision(this.getHitboxRectangle())){
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            this.y += this.speed * deltaTime;
+            if (this.detector.wallCollision(this.getHitboxRectangle())) {
                 this.x = oldX;
-                this.y = oldY-5;
+                this.y = oldY - 5;
             }
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            this.y -= speed * deltaTime;
-            if(this.detector.wallCollision(this.getHitboxRectangle())){
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            this.y -= this.speed * deltaTime;
+            if (this.detector.wallCollision(this.getHitboxRectangle())) {
                 this.x = oldX;
-                this.y = oldY+5;
+                this.y = oldY + 5;
             }
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            this.x += speed * deltaTime;
-            if(this.detector.wallCollision(this.getHitboxRectangle())){
-                this.x = oldX-5;
+        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            this.x += this.speed * deltaTime;
+            if (this.detector.wallCollision(this.getHitboxRectangle())) {
+                this.x = oldX - 5;
                 this.y = oldY;
             }
 
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            this.x -= speed * deltaTime;
-            if(this.detector.wallCollision(this.getHitboxRectangle())){
-                this.x = oldX+5;
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            this.x -= this.speed * deltaTime;
+            if (this.detector.wallCollision(this.getHitboxRectangle())) {
+                this.x = oldX + 5;
                 this.y = oldY;
             }
         }
-        this.getHitboxRectangle().setPosition(this.x+32,this.y);
+        this.getHitboxRectangle().setPosition(this.x + 32, this.y);
     }
 
-    public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities){
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            this.arrowManager.shootArrows(deltaTime,'R',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
+    public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities) {
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            this.arrowManager.shootArrows(deltaTime, 'R', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            this.arrowManager.shootArrows(deltaTime,'L',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            this.arrowManager.shootArrows(deltaTime, 'L', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            this.arrowManager.shootArrows(deltaTime,'U',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            this.arrowManager.shootArrows(deltaTime, 'U', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            this.arrowManager.shootArrows(deltaTime,'D',this.texture.getWidth(),this.texture.getHeight(),this.x,this.y,batch);
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            this.arrowManager.shootArrows(deltaTime, 'D', this.texture.getWidth(), this.texture.getHeight(), this.x, this.y, batch);
         }
-        this.arrowManager.updateAndRenderArrows(deltaTime,batch,entities);
+        this.arrowManager.updateAndRenderArrows(deltaTime, batch, entities);
     }
 
 
     public ArrowManager getArrowManager() {
-        return arrowManager;
+        return this.arrowManager;
     }
 }

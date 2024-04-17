@@ -19,12 +19,12 @@ public class Arrow {
         this.y = y;
         this.texture = texture;
         this.lifeTime = 0;
-        this.hitbox = new Hitbox(this.x,this.y,this.texture.getWidth(),this.texture.getHeight());
+        this.hitbox = new Hitbox(this.x , this.y , this.texture.getWidth() , this.texture.getHeight());
         this.direction = direction;
     }
 
-    public void update(float deltaTime){
-        switch (this.direction){
+    public void update(float deltaTime) {
+        switch (this.direction) {
             case 'U':
                 this.y += SPEED * deltaTime;
                 break;
@@ -40,8 +40,8 @@ public class Arrow {
 
         }
     }
-    public void render(SpriteBatch batch){
-        batch.draw(this.texture,this.x,this.y);
+    public void render(SpriteBatch batch) {
+        batch.draw(this.texture , this.x , this.y);
     }
 
     public void addLifeTime(float lifeTime) {
@@ -49,7 +49,7 @@ public class Arrow {
     }
 
     public float getLifeTime() {
-        return lifeTime;
+        return this.lifeTime;
     }
 
     public Hitbox getHitbox() {
@@ -57,10 +57,10 @@ public class Arrow {
     }
 
     public float getX() {
-        return x;
+        return this.x;
     }
 
     public float getY() {
-        return y;
+        return this.y;
     }
 }

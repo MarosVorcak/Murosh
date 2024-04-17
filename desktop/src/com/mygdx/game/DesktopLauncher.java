@@ -6,13 +6,13 @@ import com.mygdx.game.MainGame;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void main(String[]args) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(144);
-		config.setWindowedMode(1024,728);
+		config.setWindowedMode(1024, 728);
 		config.setResizable(false);
 		config.setTitle("Semestralna praca - Murosh the Dungeon Conqueror");
-		MainGame game = new MainGame();
-		new Lwjgl3Application(game, config);
+		new Lwjgl3Application(new MainGame(), config);
 	}
+
 }
