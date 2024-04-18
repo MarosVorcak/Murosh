@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Player extends Entity {
     private final ArrowManager arrowManager;
-    private static final float INVINCIBLITY_TIME = 0.67f;
+    private static final float INVINCIBLITY_TIME = 0.35f;
     private float timeBetweenHits;
     public Player(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
         super(texture, x, y, hp, atk, detector, speed);
@@ -56,8 +56,13 @@ public class Player extends Entity {
     }
 
     @Override
-    public void takeDMG(float dmg, char directionOfAttack) {
-
+    public void takeDMG(int dmg, char directionOfAttack, float deltaTime) {
+        this.timeBetweenHits += deltaTime;
+        if (this.timeBetweenHits >= INVINCIBLITY_TIME){
+           this.timeBetweenHits = 0;
+           this.setHp(this.getHp() - dmg);
+           System.out.println(this.getHp());
+        }
     }
 
     public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities) {

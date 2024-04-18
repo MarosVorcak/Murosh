@@ -50,9 +50,13 @@ public class GameScreen implements Screen {
         this.mapRenderer.setView(this.camera);
         this.mapRenderer.render();
         this.game.getBatch().begin();
-        this.player.update(this.player, deltaTime);
-        this.player.render(this.game.getBatch());
-        this.player.shoot(deltaTime, this.game.getBatch(), this.entities);
+        if(this.player.isAlive()){
+            this.player.update(this.player, deltaTime);
+            this.player.render(this.game.getBatch());
+            this.player.shoot(deltaTime, this.game.getBatch(), this.entities);
+        }else{
+            this.dispose();
+        }
         Iterator<Entity> iterator = this.entities.iterator();
         while (iterator.hasNext()) {
             Entity entity = iterator.next();
@@ -61,13 +65,16 @@ public class GameScreen implements Screen {
             if (!entity.isAlive()) {
                 iterator.remove();
             }
+            if(entity.getDetector().rectangleToRectangle(entity.getHitboxRectangle(), this.player.getHitboxRectangle())){
+                this.player.takeDMG(entity.getAtk(),Character.MIN_VALUE,deltaTime);
+            }
         }
         this.game.getBatch().end();
 
-        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(), this.goblin.getHitboxRectangle()));
-        this.player.getHitbox().render();
-        this.player.getArrowManager().renderArrowHitboxes();
-        this.goblin.getHitbox().render();
+//        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(), this.goblin.getHitboxRectangle()));
+//        this.player.getHitbox().render();
+//        this.player.getArrowManager().renderArrowHitboxes();
+//        this.goblin.getHitbox().render();
     }
 
 
