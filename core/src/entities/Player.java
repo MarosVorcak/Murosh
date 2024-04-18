@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Player extends Entity {
     private final ArrowManager arrowManager;
-    private static final float INVINCIBLITY_TIME = 0.35f;
+    private static final float INVINCIBLITY_TIME = 0.43f;
     private float timeBetweenHits;
     public Player(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
         super(texture, x, y, hp, atk, detector, speed);
