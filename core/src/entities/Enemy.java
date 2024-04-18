@@ -19,8 +19,22 @@ public class Enemy extends Entity {
     }
 
     @Override
-    public void takeDMG(float dmg) {
-
+    public void takeDMG(float dmg, char directionOfAttack) {
+        this.setHp((int) (this.getHp() - dmg));
+        switch (directionOfAttack){
+            case 'U':
+                this.setY(this.getY() + 5);
+                break;
+            case 'D':
+                this.setY(this.getY() - 5);
+                break;
+            case 'R':
+                this.setX(this.getX() + 5);
+                break;
+            case 'L':
+                this.setX(this.getX() - 5);
+                break;
+        }
     }
 
 }

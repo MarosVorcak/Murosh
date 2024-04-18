@@ -56,7 +56,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public void takeDMG(float dmg) {
+    public void takeDMG(float dmg, char directionOfAttack) {
 
     }
 

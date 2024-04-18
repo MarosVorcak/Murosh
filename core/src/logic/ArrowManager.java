@@ -68,7 +68,7 @@ public class ArrowManager {
             for (Entity entity : entities) {
                 if (entity instanceof Enemy) {
                     if (this.detector.rectangleToRectangle(entity.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
-                        entity.takeDMG(20);
+                        entity.takeDMG(20, arrow.getDirection());
                         iterator.remove();
                     }
                 }
