@@ -69,10 +69,6 @@ public abstract class Entity {
         this.hp = hp;
     }
 
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
     public int getHp() {
         return hp;
     }

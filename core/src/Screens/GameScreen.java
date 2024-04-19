@@ -13,7 +13,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.MainGame;
 import logic.Detection;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,8 +23,6 @@ public class GameScreen implements Screen {
     private MainGame game;
     private Player player;
     private Goblin goblin;
-    private Goblin goblin2;
-    private Goblin goblin3;
     private Detection detection;
     private ArrayList<Entity> entities;
 
@@ -41,11 +38,8 @@ public class GameScreen implements Screen {
         this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.player = new Player(new Texture("Archer_M_Big.png"), 100, 100,  100, 10, this.detection, 200);
         this.goblin = new Goblin(new Texture("goblin.png"), 400, 400, 100, 10, this.detection, 100);
-        this.goblin2 = new Goblin(new Texture("goblin.png"), 400, 600, 100, 10, this.detection, 20);
-        this.goblin3 = new Goblin(new Texture("goblin.png"), 400, 200, 100, 10, this.detection, 50);
         this.entities.add(this.goblin);
-        this.entities.add(this.goblin2);
-        this.entities.add(this.goblin3);
+
     }
     @Override
     public void show() {
@@ -55,6 +49,10 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
         this.mapRenderer.setView(this.camera);
         this.mapRenderer.render();
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+            this.map = new TmxMapLoader().load("Maps/blank_room.tmx");
+            this.mapRenderer.setMap(this.map);
+        }
         this.game.getBatch().begin();
         if(this.player.isAlive()){
             this.player.update(this.player, deltaTime);
@@ -76,11 +74,8 @@ public class GameScreen implements Screen {
             }
         }
         this.game.getBatch().end();
-
-//        System.out.println(this.detection.rectangleToRectangle(this.player.getHitboxRectangle(), this.goblin.getHitboxRectangle()));
 //        this.player.getHitbox().render();
 //        this.player.getArrowManager().renderArrowHitboxes();
-//        this.goblin.getHitbox().render();
     }
 
 

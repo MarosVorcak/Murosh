@@ -45,6 +45,16 @@ public class Detection {
         }
         return false;
     }
+    public boolean doorCollision(Rectangle rectangle) {
+        for (MapObject object : this.map.getLayers().get("Doors").getObjects()) {
+            if (object instanceof RectangleMapObject) {
+                if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 
 

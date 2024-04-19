@@ -37,7 +37,6 @@ public class Arrow {
             case 'L':
                 this.x -= SPEED * deltaTime;
                 break;
-
         }
     }
     public void render(SpriteBatch batch) {
