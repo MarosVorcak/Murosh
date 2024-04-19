@@ -25,8 +25,6 @@ public class GameScreen implements Screen {
     private Detection detection;
     private Room testRoom;
 
-
-
     public GameScreen(MainGame game) {
         this.game = game;
         this.camera = new OrthographicCamera();

@@ -32,6 +32,9 @@ public class Room {
     public TiledMap getMap(){
         return this.map;
     }
+    public void connectRoom(Room room){
+        this.connectedRooms.add(room);
+    }
     public void renderEnemies(SpriteBatch batch, float deltaTime){
         Iterator<Enemy> iterator = enemies.iterator();
         while(iterator.hasNext()){
