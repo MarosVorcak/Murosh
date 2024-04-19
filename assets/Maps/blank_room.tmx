@@ -66,6 +66,6 @@
  </objectgroup>
  <objectgroup id="4" name="Doors">
   <object id="7" x="481.188" y="30.6667" width="61.625" height="32"/>
-  <object id="8" x="480.468" y="671.178" width="61.625" height="32"/>
+  <object id="8" x="480.656" y="671.928" width="61.625" height="32"/>
  </objectgroup>
 </map>

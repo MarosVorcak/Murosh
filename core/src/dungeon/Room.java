@@ -5,14 +5,19 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import entities.Enemy;
 import entities.Player;
+import logic.Detection;
+import logic.RoomSwitcher;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 public class Room {
-    public TiledMap map;
-    public Player player;
-    public ArrayList<Enemy> enemies;
-    public ArrayList<Room> connectedRooms;
+    private TiledMap map;
+    private Player player;
+    private ArrayList<Enemy> enemies;
+    private ArrayList<Room> connectedRooms;
 
     public Room(String path) {
         this.map = new TiledMap();
@@ -35,6 +40,9 @@ public class Room {
     }
     public void connectRoom(Room room){
         this.connectedRooms.add(room);
+    }
+    public List<Room> getConnectedRooms(){
+        return Collections.unmodifiableList(this.connectedRooms);
     }
     public void renderEnemies(SpriteBatch batch, float deltaTime){
         Iterator<Enemy> iterator = enemies.iterator();

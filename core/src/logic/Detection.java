@@ -1,19 +1,21 @@
 package logic;
 
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Detection {
     private TiledMap map;
+    private MapObjects objects;
 
-    public Detection(TiledMap map) {
-        this.map = map;
+    public Detection() {
     }
 
     public void setMap(TiledMap map) {
         this.map = map;
+        this.objects = this.map.getLayers().get("Doors").getObjects();
     }
 
     public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
@@ -50,6 +52,7 @@ public class Detection {
         }
         return false;
     }
+
     public boolean doorCollision(Rectangle rectangle) {
         for (MapObject object : this.map.getLayers().get("Doors").getObjects()) {
             if (object instanceof RectangleMapObject) {

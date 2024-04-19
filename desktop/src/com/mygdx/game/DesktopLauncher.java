@@ -12,7 +12,8 @@ public class DesktopLauncher {
 		config.setWindowedMode(1024, 728);
 		config.setResizable(false);
 		config.setTitle("Semestralna praca - Murosh the Dungeon Conqueror");
-		new Lwjgl3Application(new MainGame(), config);
+		MainGame game = new MainGame();
+		new Lwjgl3Application(game, config);
 	}
 
 }

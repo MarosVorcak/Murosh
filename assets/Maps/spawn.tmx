@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="27">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="34">
  <tileset firstgid="1" source="tiles/atlas_floor- 32x32.tsx"/>
  <tileset firstgid="50" source="tiles/Dungeon_Tileset32x32.tsx"/>
- <tileset firstgid="150" source="tiles/Dungeon_Tileset32x32.tsx"/>
  <layer id="1" name="Floor" width="32" height="23">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -59,12 +58,14 @@
  </layer>
  <objectgroup id="3" name="Doors">
   <object id="1" x="481.666" y="32.6667" width="61.625" height="32"/>
+  <object id="33" x="481.975" y="672.364" width="61.625" height="32"/>
  </objectgroup>
  <objectgroup id="9" name="Collision">
   <object id="18" x="32" y="32" width="449.25" height="32"/>
   <object id="19" x="544.625" y="32.75" width="449.25" height="32"/>
   <object id="20" x="960.5" y="64.75" width="32" height="607.188"/>
   <object id="21" x="32" y="64.156" width="32" height="607.188"/>
-  <object id="22" x="32" y="671.75" width="960.167" height="32"/>
+  <object id="31" x="32.0623" y="672.625" width="449.25" height="32"/>
+  <object id="32" x="544.688" y="673.375" width="449.25" height="32"/>
  </objectgroup>
 </map>
