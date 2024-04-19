@@ -78,7 +78,7 @@ public class Player extends Entity {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             this.arrowManager.shootArrows(deltaTime, 'D', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
-        this.arrowManager.updateAndRenderArrows(deltaTime, batch, enemies);
+        this.arrowManager.updateAndRenderArrows(deltaTime, batch, enemies, this.getAtk());
     }
 
     public ArrowManager getArrowManager() {

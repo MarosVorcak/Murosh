@@ -14,8 +14,9 @@ public class Room {
     public ArrayList<Enemy> enemies;
     public ArrayList<Room> connectedRooms;
 
-    public Room(TiledMap map) {
-        this.map = map;
+    public Room(String path) {
+        this.map = new TiledMap();
+        this.loadMap(path);
         this.enemies = new ArrayList<Enemy>();
         this.connectedRooms = new ArrayList<Room>();
     }
@@ -51,6 +52,9 @@ public class Room {
     }
     public boolean checkIfEnemiesAreDead(){
         return this.enemies.isEmpty();
+    }
+    public Player getPlayer(){
+        return this.player;
     }
     public void renderPlayer(SpriteBatch batch, float deltaTime){
         this.player.update(this.player,deltaTime);

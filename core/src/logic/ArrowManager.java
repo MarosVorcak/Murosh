@@ -14,6 +14,7 @@ public class ArrowManager {
     private Detection detector;
     private float betweenShotTimer;
     private char arrowDirect;
+    private int playerDMG;
     public static final float TIME_BETWEEN_SHOTS = 0.8f;
     public static final float ARROW_LIFE_TIME = 2;
 
@@ -57,7 +58,7 @@ public class ArrowManager {
         }
     }
 
-    public void updateAndRenderArrows(float deltaTime, SpriteBatch batch, ArrayList<Enemy>enemies) {
+    public void updateAndRenderArrows(float deltaTime, SpriteBatch batch, ArrayList<Enemy>enemies, int playerDMG) {
         Iterator<Arrow> iterator = this.arrows.iterator();
         while (iterator.hasNext()) {
             Arrow arrow = iterator.next();
@@ -67,7 +68,7 @@ public class ArrowManager {
             arrow.render(batch);
             for (Enemy enemy : enemies) {
                     if (this.detector.rectangleToRectangle(enemy.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
-                        enemy.takeDMG(20, arrow.getDirection(), deltaTime);
+                        enemy.takeDMG(playerDMG, arrow.getDirection(), deltaTime);
                         iterator.remove();
                     }
             }
