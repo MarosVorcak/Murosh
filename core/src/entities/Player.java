@@ -65,7 +65,7 @@ public class Player extends Entity {
         }
     }
 
-    public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Entity> entities) {
+    public void shoot(float deltaTime, SpriteBatch batch, ArrayList<Enemy> enemies) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             this.arrowManager.shootArrows(deltaTime, 'R', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
@@ -78,7 +78,7 @@ public class Player extends Entity {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             this.arrowManager.shootArrows(deltaTime, 'D', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
         }
-        this.arrowManager.updateAndRenderArrows(deltaTime, batch, entities);
+        this.arrowManager.updateAndRenderArrows(deltaTime, batch, enemies);
     }
 
     public ArrowManager getArrowManager() {
