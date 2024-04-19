@@ -11,6 +11,11 @@ public class Detection {
     public Detection(TiledMap map) {
         this.map = map;
     }
+
+    public void setMap(TiledMap map) {
+        this.map = map;
+    }
+
     public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
         float rect1HalfWidth = rect1.width / 2;
         float rect1HalfHeight = rect1.height / 2;

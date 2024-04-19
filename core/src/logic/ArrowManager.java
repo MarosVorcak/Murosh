@@ -57,7 +57,7 @@ public class ArrowManager {
         }
     }
 
-    public void updateAndRenderArrows(float deltaTime, SpriteBatch batch, ArrayList<Entity>entities) {
+    public void updateAndRenderArrows(float deltaTime, SpriteBatch batch, ArrayList<Enemy>enemies) {
         Iterator<Arrow> iterator = this.arrows.iterator();
         while (iterator.hasNext()) {
             Arrow arrow = iterator.next();
@@ -65,13 +65,11 @@ public class ArrowManager {
             arrow.update(deltaTime);
             arrow.getHitbox().getRectangle().setPosition(arrow.getX(), arrow.getY());
             arrow.render(batch);
-            for (Entity entity : entities) {
-                if (entity instanceof Enemy) {
-                    if (this.detector.rectangleToRectangle(entity.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
-                        entity.takeDMG(20, arrow.getDirection(), deltaTime);
+            for (Enemy enemy : enemies) {
+                    if (this.detector.rectangleToRectangle(enemy.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
+                        enemy.takeDMG(20, arrow.getDirection(), deltaTime);
                         iterator.remove();
                     }
-                }
             }
             if (arrow.getLifeTime() >= ARROW_LIFE_TIME || this.detector.wallCollision(arrow.getHitbox().getRectangle())) {
                 iterator.remove();
