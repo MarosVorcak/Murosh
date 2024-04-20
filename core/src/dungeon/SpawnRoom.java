@@ -5,7 +5,7 @@ import logic.Detection;
 
 public class SpawnRoom extends Room{
 
-    public SpawnRoom(String path) {
-        super(path);
+    public SpawnRoom() {
+        super("Maps/spawn.tmx");
     }
 }

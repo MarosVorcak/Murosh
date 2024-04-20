@@ -38,6 +38,7 @@ public class Enemy extends Entity {
     }
 
     //Slime bunde lungovat
-
+    //Shaman bude strielat mozno homing
+    //Boos bude striet omnidirectional a lungovat
 
 }

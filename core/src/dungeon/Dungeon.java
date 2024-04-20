@@ -9,7 +9,7 @@ public class Dungeon {
     private final Detection detector;
 
     public Dungeon(Detection detector) {
-        DungeonGenerator generator = new DungeonGenerator();
+        DungeonGenerator generator = new DungeonGenerator(detector);
         this.detector = detector;
         this.currentRoom = generator.generateDungeon();
         this.roomSwitcher = new RoomSwitcher(this.currentRoom);
@@ -19,7 +19,7 @@ public class Dungeon {
         return this.currentRoom;
     }
     public boolean swithcedRooms(){
-        if (this.currentRoom.checkIfEnemiesAreDead()){
+        if (this.currentRoom.checkIfRoomIsExitable()){
             if (this.detector.doorCollision(this.currentRoom.getPlayer().getHitboxRectangle())){
                 this.currentRoom = this.roomSwitcher.switchRooms();
                 return true;

@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.MainGame;
+import entities.Shaman;
+import entities.Slime;
 import logic.Detection;
 
 public class GameScreen implements Screen {
@@ -29,10 +31,7 @@ public class GameScreen implements Screen {
         this.dungeon = new Dungeon(this.detection);
         this.detection.setMap(this.dungeon.getCurrentRoom().getMap());
         this.dungeon.getCurrentRoom().setPlayer(new Player( 100, 100, this.detection));
-        this.dungeon.getCurrentRoom().addEnemy(new Goblin( 400, 400, this.detection));
-//        this.dungeon.getCurrentRoom().connectRoom(new Room("Maps/normal_room1.tmx"));
-//        this.dungeon.getCurrentRoom().getConnectedRooms().get(0).connectRoom(this.dungeon.getCurrentRoom());
-//        this.dungeon.getCurrentRoom().getConnectedRooms().get(0).addEnemy(new Goblin( 400, 400, this.detection));
+        this.dungeon.getCurrentRoom().addEnemy(new Shaman(400, 400, this.detection));
         this.mapRenderer = new OrthogonalTiledMapRenderer(this.dungeon.getCurrentRoom().getMap());
 
     }
@@ -53,6 +52,7 @@ public class GameScreen implements Screen {
             this.mapRenderer.setMap(this.dungeon.getCurrentRoom().getMap());
         }
         this.dungeon.dangerObjects(deltaTime);
+        this.dungeon.getCurrentRoom().renderHitboxes();
     }
 
 
