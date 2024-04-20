@@ -37,4 +37,7 @@ public class Enemy extends Entity {
         }
     }
 
+    //Slime bunde lungovat
+
+
 }

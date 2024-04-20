@@ -13,8 +13,8 @@ public class Player extends Entity {
     private final ArrowManager arrowManager;
     private static final float INVINCIBLITY_TIME = 0.43f;
     private float timeBetweenHits;
-    public Player(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
-        super(texture, x, y, hp, atk, detector, speed);
+    public Player(float x, float y, Detection detector) {
+        super(new Texture("player.png"), x, y, 100, 20, detector, 200);
         this.arrowManager = new ArrowManager(detector);
         this.timeBetweenHits = 0;
     }
@@ -74,6 +74,7 @@ public class Player extends Entity {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             this.arrowManager.shootArrows(deltaTime, 'U', this.getTexture().getWidth(), this.getX(), this.getY(), batch);
+
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             this.arrowManager.shootArrows(deltaTime, 'D', this.getTexture().getWidth(), this.getX(), this.getY(), batch);

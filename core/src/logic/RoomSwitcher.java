@@ -35,7 +35,7 @@ public class RoomSwitcher {
         }else{
             float deltaYDownRoom = Math.abs(this.currentRoom.getMap().getLayers().get("Doors").getObjects().getByType(RectangleMapObject.class).get(1).getRectangle().y - this.currentRoom.getPlayer().getY());
             float deltaYUpRoom = Math.abs(this.currentRoom.getMap().getLayers().get("Doors").getObjects().getByType(RectangleMapObject.class).get(0).getRectangle().y - this.currentRoom.getPlayer().getY());
-            if(deltaYDownRoom > deltaYUpRoom){
+            if(deltaYDownRoom < deltaYUpRoom){
                 this.switchRoom = this.currentRoom.getConnectedRooms().getFirst();
             }else{
                 this.switchRoom = this.currentRoom.getConnectedRooms().get(1);

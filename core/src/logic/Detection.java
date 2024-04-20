@@ -8,14 +8,12 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Detection {
     private TiledMap map;
-    private MapObjects objects;
 
     public Detection() {
     }
 
     public void setMap(TiledMap map) {
         this.map = map;
-        this.objects = this.map.getLayers().get("Doors").getObjects();
     }
 
     public boolean rectangleToRectangle(Rectangle rect1, Rectangle rect2) {
@@ -58,6 +56,18 @@ public class Detection {
             if (object instanceof RectangleMapObject) {
                 if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
                     return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean dangerObjectCollision(Rectangle rectangle) {
+        if (this.map.getLayers().get("DangerObjects") != null){
+            for (MapObject object : this.map.getLayers().get("DangerObjects").getObjects()) {
+                if (object instanceof RectangleMapObject) {
+                    if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
+                        return true;
+                    }
                 }
             }
         }

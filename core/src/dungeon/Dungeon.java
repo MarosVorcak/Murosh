@@ -5,19 +5,18 @@ import logic.RoomSwitcher;
 
 public class Dungeon {
     private Room currentRoom;
-    private final DungeonGenerator generator;
     private final RoomSwitcher roomSwitcher;
     private final Detection detector;
 
     public Dungeon(Detection detector) {
-        this.generator = new DungeonGenerator();
+        DungeonGenerator generator = new DungeonGenerator();
         this.detector = detector;
-        this.currentRoom = this.generator.generateDungeon();
+        this.currentRoom = generator.generateDungeon();
         this.roomSwitcher = new RoomSwitcher(this.currentRoom);
     }
 
     public Room getCurrentRoom() {
-        return currentRoom;
+        return this.currentRoom;
     }
     public boolean swithcedRooms(){
         if (this.currentRoom.checkIfEnemiesAreDead()){
@@ -27,5 +26,10 @@ public class Dungeon {
             }
         }
         return false;
+    }
+    public void dangerObjects(float deltaTime){
+        if (this.detector.dangerObjectCollision(this.currentRoom.getPlayer().getHitboxRectangle())){
+            this.currentRoom.getPlayer().takeDMG(10,Character.MIN_VALUE,deltaTime);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package dungeon;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import entities.Enemy;
@@ -18,12 +19,14 @@ public class Room {
     private Player player;
     private ArrayList<Enemy> enemies;
     private ArrayList<Room> connectedRooms;
+    private MapObjects objects;
 
     public Room(String path) {
         this.map = new TiledMap();
         this.loadMap(path);
         this.enemies = new ArrayList<Enemy>();
         this.connectedRooms = new ArrayList<Room>();
+        this.objects = this.map.getLayers().get("Doors").getObjects();
     }
 
     public void setPlayer(Player player) {

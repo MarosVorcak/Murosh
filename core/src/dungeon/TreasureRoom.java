@@ -5,7 +5,7 @@ import logic.Detection;
 
 public class TreasureRoom extends Room{
 
-    public TreasureRoom(String path) {
-        super(path);
+    public TreasureRoom() {
+        super("Maps/treasure_room.tmx");
     }
 }

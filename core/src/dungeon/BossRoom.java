@@ -5,7 +5,7 @@ import logic.Detection;
 
 public class BossRoom extends Room{
 
-    public BossRoom(String path) {
-        super(path);
+    public BossRoom() {
+        super("Maps/boss_room.tmx");
     }
 }

@@ -7,6 +7,7 @@ import entities.Enemy;
 import entities.Entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class ArrowManager {
