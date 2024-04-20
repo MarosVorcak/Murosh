@@ -21,38 +21,34 @@ public class Player extends Entity {
 
     @Override
     public void update(Player player, float deltaTime) {
-        float oldX = this.getX();
-        float oldY = this.getY();
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            this.setY(oldY + this.getSpeed() * deltaTime);
-            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
-                this.setX(oldX);
-                this.setY(oldY - 5);
-            }
+            moveOnY(this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            this.setY(oldY - (this.getSpeed() * deltaTime));
-            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
-                this.setX(oldX);
-                this.setY(oldY + 5);
-            }
+            moveOnY(-this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            this.setX(oldX + this.getSpeed() * deltaTime);
-            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
-                this.setX(oldX - 5);
-                this.setY(oldY);
-            }
-
+            moveOnX(this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            this.setX(oldX - (this.getSpeed() * deltaTime));
-            if (this.getDetector().wallCollision(this.getHitboxRectangle())) {
-                this.setX(oldX + 5);
-                this.setY(oldY);
-            }
+            moveOnX(-this.getSpeed()*deltaTime);
         }
         this.getHitboxRectangle().setPosition(this.getX() + 32, this.getY());
+    }
+
+    private void moveOnX(float distance){
+        float newX = this.getX() + distance;
+        this.getHitboxRectangle().setPosition(newX + 32, this.getY());
+        if (!this.getDetector().wallCollision(this.getHitboxRectangle())){
+            this.setX(newX);
+        }
+    }
+    private void moveOnY(float distance){
+        float newY = this.getY() + distance;
+        this.getHitboxRectangle().setPosition(this.getX() + 32, newY);
+        if (!this.getDetector().wallCollision(this.getHitboxRectangle())){
+            this.setY(newY);
+        }
     }
 
     @Override
