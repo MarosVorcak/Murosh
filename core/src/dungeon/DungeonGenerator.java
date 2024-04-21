@@ -85,6 +85,17 @@ public class DungeonGenerator {
                        Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
                        room.addEnemy(goblin);
                        spawnedEnemies.add(goblin);
+                    }else{
+                        int replacementEnemy = random.nextInt(2)+1;
+                        if (replacementEnemy == 1){
+                            Slime slime = new Slime(spawnX,spawnY,this.detector);
+                            room.addEnemy(slime);
+                            spawnedEnemies.add(slime);
+                        }else{
+                            Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
+                            room.addEnemy(shaman);
+                            spawnedEnemies.add(shaman);
+                        }
                     }
                     break;
                 case 2:
@@ -92,6 +103,17 @@ public class DungeonGenerator {
                         Slime slime = new Slime(spawnX,spawnY,this.detector);
                         room.addEnemy(slime);
                         spawnedEnemies.add(slime);
+                    }else{
+                        int replacementEnemy = random.nextInt(2)+1;
+                        if (replacementEnemy == 1){
+                            Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
+                            room.addEnemy(goblin);
+                            spawnedEnemies.add(goblin);
+                        }else{
+                            Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
+                            room.addEnemy(shaman);
+                            spawnedEnemies.add(shaman);
+                        }
                     }
                     break;
                 case 3:
@@ -99,6 +121,17 @@ public class DungeonGenerator {
                         Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
                         room.addEnemy(shaman);
                         spawnedEnemies.add(shaman);
+                    }else{
+                        int replacementEnemy = random.nextInt(2)+1;
+                        if (replacementEnemy == 1){
+                            Slime slime = new Slime(spawnX,spawnY,this.detector);
+                            room.addEnemy(slime);
+                            spawnedEnemies.add(slime);
+                        }else{
+                            Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
+                            room.addEnemy(goblin);
+                            spawnedEnemies.add(goblin);
+                        }
                     }
                     break;
             }
