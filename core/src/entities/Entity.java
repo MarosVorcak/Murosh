@@ -77,6 +77,14 @@ public abstract class Entity {
         return atk;
     }
 
+    public void setAtk(int atk) {
+        this.atk = atk;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public Detection getDetector() {
         return this.detector;
     }

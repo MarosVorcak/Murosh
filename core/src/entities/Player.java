@@ -14,7 +14,7 @@ public class Player extends Entity {
     private static final float INVINCIBLITY_TIME = 0.43f;
     private float timeBetweenHits;
     public Player(float x, float y, Detection detector) {
-        super(new Texture("player.png"), x, y, 100, 30, detector, 200);
+        super(new Texture("Entities/player.png"), x, y, 100, 30, detector, 200);
         this.arrowManager = new ArrowManager(detector);
         this.timeBetweenHits = 0;
     }

@@ -5,7 +5,7 @@ import logic.Detection;
 
 public class Goblin extends Enemy {
     public Goblin(float x, float y, Detection detector) {
-        super(new Texture("goblin.png"), x, y, 60, 10, detector, 100);
+        super(new Texture("Entities/goblin.png"), x, y, 60, 10, detector, 100);
         this.getHitboxRectangle().set(x+16,y,this.getTexture().getWidth()-32,this.getTexture().getHeight()-32);
     }
 

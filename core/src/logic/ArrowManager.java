@@ -86,7 +86,7 @@ public class ArrowManager {
         }
     }
     private Texture createTexture(char direction) {
-        String path = "projectiles/arrows/arrow_" + direction + ".png";
+        String path = "Projectiles/arrows/arrow_" + direction + ".png";
         return new Texture(path);
     }
 }
