@@ -2,13 +2,8 @@ package dungeon;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import entities.Enemy;
-import entities.Goblin;
-import entities.Shaman;
-import entities.Slime;
+import entities.*;
 import logic.Detection;
-import sun.nio.cs.ArrayEncoder;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -33,6 +28,7 @@ public class DungeonGenerator {
                 boolean isBossRoom = ((random.nextInt(100) + 1) <= bossRoomChance);
                 if(isBossRoom){
                     current = new BossRoom();
+                    current.addEnemy(new Boss(400,400,this.detector));
                     previous = this.connectRooms(current, previous);
                     break;
                 }else{
@@ -42,9 +38,9 @@ public class DungeonGenerator {
                     previous = this.connectRooms(current, previous);
                 }
             }else{
-                boolean isSpecial = ((random.nextInt(100) + 1) <= 50);
+                boolean isSpecial = ((random.nextInt(100) + 1) <= 40);
                 if (isSpecial){
-                    boolean isTreasureRoom = ((random.nextInt(100) + 1) <= 40);
+                    boolean isTreasureRoom = ((random.nextInt(100) + 1) <= 60);
                     if (isTreasureRoom){
                         current = new TreasureRoom();
                         previous = this.connectRooms(current, previous);
@@ -62,7 +58,7 @@ public class DungeonGenerator {
         return spawn;
     }
     private Room generateNormalRoom(Random random){
-        int templateNumber = random.nextInt(3) + 1;
+        int templateNumber = random.nextInt(4) + 1;
         return new Room("Maps/normal_room" + templateNumber + ".tmx");
     }
     private Room connectRooms(Room current, Room previous){
@@ -81,7 +77,7 @@ public class DungeonGenerator {
             int enemyType = random.nextInt(3)+1;
             switch (enemyType){
                 case 1:
-                    if (!checkIfEnemyExists(enemyType,spawnedEnemies)){
+                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)){
                        Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
                        room.addEnemy(goblin);
                        spawnedEnemies.add(goblin);
@@ -99,7 +95,7 @@ public class DungeonGenerator {
                     }
                     break;
                 case 2:
-                    if (!checkIfEnemyExists(enemyType,spawnedEnemies)){
+                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)){
                         Slime slime = new Slime(spawnX,spawnY,this.detector);
                         room.addEnemy(slime);
                         spawnedEnemies.add(slime);
@@ -117,7 +113,7 @@ public class DungeonGenerator {
                     }
                     break;
                 case 3:
-                    if (!checkIfEnemyExists(enemyType,spawnedEnemies)) {
+                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)) {
                         Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
                         room.addEnemy(shaman);
                         spawnedEnemies.add(shaman);
