@@ -6,16 +6,16 @@ import com.badlogic.gdx.math.Vector2;
 import logic.Detection;
 
 public class Slime extends Enemy{
-    private static final float CHARGE_DURATION = 1f;
+    private static final float CHARGE_DURATION = 0.5f;
     private static final float SHAKE_AMMOUNT = 0.5f;
-    private static final float LUNGE_DURATION = 0.1f;
+    private static final float LUNGE_DISTANCE = 40f;
     private static final float LUNGE_COOLDOWN = 3;
     private float timeBetweenLunges;
     private float chargeUpTimer;
     private float lastKnownPlayerX;
     private float lastKnownPlayerY;
     private boolean isSpeedBoosted;
-    private float lungeTimer;
+    private float lungeDistanceTraveled;
     private boolean isLunging;
 
     public Slime(float x, float y, Detection detector) {
@@ -25,9 +25,7 @@ public class Slime extends Enemy{
         this.timeBetweenLunges = 0;
         this.isLunging = false;
         this.isSpeedBoosted = false;
-        this.lungeTimer = 0;
-
-
+        this.lungeDistanceTraveled = 0;
     }
 
     @Override
@@ -42,11 +40,12 @@ public class Slime extends Enemy{
         } else {
             if (this.chargeUpLunge(deltaTime)){
                 if (!this.isSpeedBoosted){
-                   this.setSpeed(this.getSpeed() * 50);
+                   this.setSpeed(this.getSpeed() * 9);
                    this.isSpeedBoosted = true;
                 }
                 if (this.lunge(deltaTime)){
-                    this.setSpeed(this.getSpeed()/50);
+                    System.out.println();
+                    this.setSpeed(this.getSpeed() / 9);
                     this.isLunging = false;
                     this.isSpeedBoosted = false;
                     this.timeBetweenLunges = 0;
@@ -72,16 +71,19 @@ public class Slime extends Enemy{
 
     private boolean lunge(float deltaTime) {
         this.isLunging = true;
-        this.lungeTimer += deltaTime;
-        if (this.lungeTimer <= LUNGE_DURATION){
+        if (this.lungeDistanceTraveled <= LUNGE_DISTANCE){
+            float oldX = this.getX();
+            float oldY = this.getY();
             float deltaX = this.lastKnownPlayerX - this.getX();
-            float deltaY = this.lastKnownPlayerX - this.getY();
+            float deltaY = this.lastKnownPlayerY - this.getY();
             float angleToPlayer = (float)Math.atan2(deltaY, deltaX);
             this.setX(this.getX() + (float)(Math.cos(angleToPlayer) * this.getSpeed() * deltaTime));
             this.setY(this.getY() + (float)(Math.sin(angleToPlayer) * this.getSpeed() * deltaTime));
+            this.lungeDistanceTraveled += (float) Math.sqrt(Math.pow(oldX - this.getX(),2) + Math.pow(oldY - this.getY(),2));
+            System.out.println(this.lungeDistanceTraveled);
             return false;
         }else{
-            this.lungeTimer = 0;
+            this.lungeDistanceTraveled = 0;
             return true;
         }
     }
