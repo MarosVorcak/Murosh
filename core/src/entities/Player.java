@@ -22,16 +22,16 @@ public class Player extends Entity {
     @Override
     public void update(Player player, float deltaTime) {
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            moveOnY(this.getSpeed()*deltaTime);
+            this.moveOnY(this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            moveOnY(-this.getSpeed()*deltaTime);
+            this.moveOnY(-this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            moveOnX(this.getSpeed()*deltaTime);
+            this.moveOnX(this.getSpeed()*deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            moveOnX(-this.getSpeed()*deltaTime);
+            this.moveOnX(-this.getSpeed()*deltaTime);
         }
         this.getHitboxRectangle().setPosition(this.getX() + 32, this.getY());
     }
