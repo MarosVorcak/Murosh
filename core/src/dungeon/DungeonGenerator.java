@@ -59,6 +59,7 @@ public class DungeonGenerator {
     }
     private Room generateNormalRoom(Random random){
         int templateNumber = random.nextInt(4) + 1;
+        System.out.println("Maps/normal_room" + templateNumber + ".tmx");
         return new Room("Maps/normal_room" + templateNumber + ".tmx");
     }
     private Room connectRooms(Room current, Room previous){

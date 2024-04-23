@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import logic.Detection;
 
 public class Slime extends Enemy{
-    private static final float CHARGE_DURATION = 0.5f;
+    private static final float CHARGE_DURATION = 0.85f;
     private static final float SHAKE_AMMOUNT = 0.5f;
     private static final float LUNGE_DISTANCE = 120f;
     private static final float LUNGE_COOLDOWN = 3;
@@ -57,7 +57,6 @@ public class Slime extends Enemy{
     private boolean chargeUpLunge(float deltaTime) {
         this.chargeUpTimer += deltaTime;
         if(this.chargeUpTimer <= CHARGE_DURATION){
-            System.out.println("trase ma");
             float shakeY = MathUtils.random(-SHAKE_AMMOUNT, SHAKE_AMMOUNT);
             float shakeX = MathUtils.random(-SHAKE_AMMOUNT, SHAKE_AMMOUNT);
             this.setX(this.getX() + shakeX);
@@ -78,8 +77,7 @@ public class Slime extends Enemy{
             float angleToPlayer = (float)Math.atan2(deltaY, deltaX);
             this.setX(this.getX() + (float)(Math.cos(angleToPlayer) * this.getSpeed() * deltaTime));
             this.setY(this.getY() + (float)(Math.sin(angleToPlayer) * this.getSpeed() * deltaTime));
-            this.lungeDistanceTraveled += (float) Math.sqrt(Math.pow(oldX - this.getX(),2) + Math.pow(oldY - this.getY(),2));
-            System.out.println(this.lungeDistanceTraveled);
+            this.lungeDistanceTraveled += (float)Math.sqrt(Math.pow(oldX - this.getX(),2) + Math.pow(oldY - this.getY(),2));
             return false;
         }else{
             this.lungeDistanceTraveled = 0;
