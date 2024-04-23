@@ -17,7 +17,7 @@ public class Player extends Entity {
     private Sprite sprite;
     private boolean isFlipped;
     public Player(float x, float y, Detection detector) {
-        super(new Texture("Entities/player.png"), x, y, 100, 3000, detector, 200);
+        super(new Texture("Entities/player.png"), x, y, 100, 20, detector, 200);
         this.sprite = new Sprite(this.getTexture());
         this.arrowManager = new ArrowManager(detector);
         this.timeBetweenHits = 0;

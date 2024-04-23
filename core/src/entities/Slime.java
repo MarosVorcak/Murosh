@@ -8,7 +8,7 @@ import logic.Detection;
 public class Slime extends Enemy{
     private static final float CHARGE_DURATION = 0.85f;
     private static final float SHAKE_AMMOUNT = 0.5f;
-    private static final float LUNGE_DISTANCE = 120f;
+    private static final float LUNGE_DISTANCE = 180f;
     private static final float LUNGE_COOLDOWN = 3;
     private float timeBetweenLunges;
     private float chargeUpTimer;
