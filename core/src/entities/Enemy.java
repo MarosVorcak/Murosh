@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import logic.Detection;
 
 public class Enemy extends Entity {
+
     public Enemy(Texture texture, float x, float y, int hp, int atk, Detection detector, int speed) {
         super(texture, x, y, hp, atk, detector, speed);
     }
@@ -37,7 +38,6 @@ public class Enemy extends Entity {
         }
     }
 
-    //Slime bunde lungovat
     //Shaman bude strielat mozno homing
     //Boos bude striet omnidirectional a lungovat
 

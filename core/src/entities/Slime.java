@@ -88,10 +88,6 @@ public class Slime extends Enemy{
 
     }
 
-
-
-
-
     private boolean isLungeOnCooldown(){
         return this.timeBetweenLunges < LUNGE_COOLDOWN;
     }

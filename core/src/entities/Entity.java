@@ -70,11 +70,11 @@ public abstract class Entity {
     }
 
     public int getHp() {
-        return hp;
+        return this.hp;
     }
 
     public int getAtk() {
-        return atk;
+        return this.atk;
     }
 
     public void setAtk(int atk) {

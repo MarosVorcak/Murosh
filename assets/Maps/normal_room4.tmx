@@ -83,7 +83,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Collisions" locked="1">
+ <objectgroup id="4" name="Collision" locked="1">
   <object id="1" x="30.2319" y="31.1194" width="449.25" height="32"/>
   <object id="2" x="542.858" y="31.8694" width="449.25" height="32"/>
   <object id="3" x="30.8067" y="670.958" width="449.25" height="32"/>

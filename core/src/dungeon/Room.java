@@ -5,6 +5,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import entities.Enemy;
 import entities.Player;
+import entities.Shaman;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -42,11 +44,14 @@ public class Room {
         return Collections.unmodifiableList(this.connectedRooms);
     }
     public void renderEnemies(SpriteBatch batch, float deltaTime){
-        Iterator<Enemy> iterator = enemies.iterator();
+        Iterator<Enemy> iterator = this.enemies.iterator();
         while(iterator.hasNext()){
             Enemy enemy = iterator.next();
             enemy.update(this.player, deltaTime);
             enemy.render(batch);
+            if (enemy instanceof Shaman){
+                ((Shaman) enemy).shootFireball(this.player, batch, deltaTime);
+            }
             if (!enemy.isAlive()) {
                 iterator.remove();
             }
@@ -68,7 +73,7 @@ public class Room {
     }
 
     public void renderHitboxes(){
-        for (Enemy enemy : enemies) {
+        for (Enemy enemy : this.enemies) {
             enemy.getHitbox().render();
         }
         this.player.getHitbox().render();

@@ -73,6 +73,18 @@ public class Detection {
         }
         return false;
     }
+    public boolean specialObjectCollision(Rectangle rectangle) {
+        if (this.map.getLayers().get("SpecialObjects") != null){
+            for (MapObject object : this.map.getLayers().get("SpecialObjects").getObjects()) {
+                if (object instanceof RectangleMapObject) {
+                    if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
 
 

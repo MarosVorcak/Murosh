@@ -104,7 +104,7 @@
   <object id="28" x="640.242" y="160.674" width="32" height="32"/>
   <object id="29" x="608.174" y="128.826" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="7" name="SpecialObject">
+ <objectgroup id="7" name="SpecialObjects">
   <object id="15" x="479.25" y="319.667" width="64" height="64"/>
  </objectgroup>
 </map>
