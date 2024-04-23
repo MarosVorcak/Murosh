@@ -8,7 +8,7 @@ import logic.Detection;
 public class Slime extends Enemy{
     private static final float CHARGE_DURATION = 0.5f;
     private static final float SHAKE_AMMOUNT = 0.5f;
-    private static final float LUNGE_DISTANCE = 40f;
+    private static final float LUNGE_DISTANCE = 120f;
     private static final float LUNGE_COOLDOWN = 3;
     private float timeBetweenLunges;
     private float chargeUpTimer;
@@ -40,40 +40,39 @@ public class Slime extends Enemy{
         } else {
             if (this.chargeUpLunge(deltaTime)){
                 if (!this.isSpeedBoosted){
-                   this.setSpeed(this.getSpeed() * 9);
+                   this.setSpeed(this.getSpeed() * 15);
                    this.isSpeedBoosted = true;
                 }
                 if (this.lunge(deltaTime)){
-                    System.out.println();
-                    this.setSpeed(this.getSpeed() / 9);
-                    this.isLunging = false;
+                    this.setSpeed(this.getSpeed() / 15);
                     this.isSpeedBoosted = false;
                     this.timeBetweenLunges = 0;
+                    this.chargeUpTimer = 0;
                 }
             }
         }
         this.getHitboxRectangle().setPosition(this.getX()+8, this.getY());
     }
 
-    private boolean chargeUpLunge(float deltaTime){
+    private boolean chargeUpLunge(float deltaTime) {
         this.chargeUpTimer += deltaTime;
         if(this.chargeUpTimer <= CHARGE_DURATION){
+            System.out.println("trase ma");
             float shakeY = MathUtils.random(-SHAKE_AMMOUNT, SHAKE_AMMOUNT);
             float shakeX = MathUtils.random(-SHAKE_AMMOUNT, SHAKE_AMMOUNT);
             this.setX(this.getX() + shakeX);
             this.setY(this.getY() + shakeY);
             return false;
         } else {
-            this.chargeUpTimer = 0;
             return true;
         }
     }
 
     private boolean lunge(float deltaTime) {
         this.isLunging = true;
+        float oldX = this.getX();
+        float oldY = this.getY();
         if (this.lungeDistanceTraveled <= LUNGE_DISTANCE){
-            float oldX = this.getX();
-            float oldY = this.getY();
             float deltaX = this.lastKnownPlayerX - this.getX();
             float deltaY = this.lastKnownPlayerY - this.getY();
             float angleToPlayer = (float)Math.atan2(deltaY, deltaX);
@@ -84,8 +83,11 @@ public class Slime extends Enemy{
             return false;
         }else{
             this.lungeDistanceTraveled = 0;
+            this.isLunging = false;
             return true;
         }
+
+
     }
 
 
