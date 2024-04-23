@@ -1,10 +1,10 @@
 package dungeon;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import logic.Detection;
 
 public class BossRoom extends Room{
-
+    /**
+     * tu bude zrobena muzika pocas bossfightu
+     */
     public BossRoom() {
         super("Maps/boss_room.tmx");
     }
