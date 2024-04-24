@@ -13,17 +13,19 @@ public class FireballManager {
     private final Detection detector;
     private static final float FIREBALL_COOLDOWN = 3;
     private float fireballTimer;
+    private float fireballSpeed;
 
-    public FireballManager(Detection detector) {
+    public FireballManager(Detection detector,float fireballSpeed) {
         this.detector = detector;
         this.fireballs = new ArrayList<Fireball>();
         this.fireballTimer = 1;
+        this.fireballSpeed = fireballSpeed;
     }
     public void shootFireballs(float spawnX, float spawnY,float angle, float deltaTime){
         this.fireballTimer += deltaTime;
         if (this.fireballTimer >= FIREBALL_COOLDOWN){
             this.fireballTimer = 0;
-            this.fireballs.add(new Fireball(spawnX, spawnY, new Texture("Projectiles/fireball.png"), 300, angle));
+            this.fireballs.add(new Fireball(spawnX, spawnY, new Texture("Projectiles/fireball.png"), this.fireballSpeed, angle));
         }
     }
     public void renderAndUpdateFireballs(float deltaTime, SpriteBatch batch, Player player, int dmg){
@@ -41,5 +43,9 @@ public class FireballManager {
                 iterator.remove();
             }
         }
+    }
+
+    public float getFireballSpeed() {
+        return this.fireballSpeed;
     }
 }
