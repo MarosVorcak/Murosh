@@ -60,7 +60,8 @@ public class Room {
             }
         }
     }
-    public boolean checkIfRoomIsExitable(){
+    public boolean checkIfRoomIsExitable()
+    {
         return this.enemies.isEmpty();
     }
     public Player getPlayer(){

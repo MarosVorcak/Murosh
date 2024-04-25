@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
         this.dungeon = new Dungeon(this.detection);
         this.detection.setMap(this.dungeon.getCurrentRoom().getMap());
         this.dungeon.getCurrentRoom().setPlayer(new Player( 100, 100, this.detection));
-        this.dungeon.getCurrentRoom().addEnemy(new Shaman(400, 400, this.detection));
+//        this.dungeon.getCurrentRoom().addEnemy(new Slime(400, 400, this.detection));
         this.mapRenderer = new OrthogonalTiledMapRenderer(this.dungeon.getCurrentRoom().getMap());
 
     }

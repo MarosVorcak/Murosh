@@ -36,7 +36,7 @@ public class FireballManager {
             fireball.getHitbox().getRectangle().setPosition(fireball.getX(), fireball.getY());
             fireball.render(batch);
             if (this.detector.rectangleToRectangle(player.getHitboxRectangle(), fireball.getHitbox().getRectangle())){
-                player.takeDMG(dmg,Character.MIN_VALUE,deltaTime);
+                player.takeDMG(dmg,Character.MIN_VALUE,0.43f);
                 iterator.remove();
             }
             if(this.detector.wallCollision(fireball.getHitbox().getRectangle()) || this.detector.doorCollision(fireball.getHitbox().getRectangle())){

@@ -46,8 +46,8 @@ public class Slime extends Enemy{
                 if (this.lunge(deltaTime)){
                     this.setSpeed(this.getSpeed() / 15);
                     this.isSpeedBoosted = false;
-                    this.timeBetweenLunges = 0;
                     this.chargeUpTimer = 0;
+                    this.timeBetweenLunges = 0;
                 }
             }
         }

@@ -14,7 +14,7 @@ public class Player extends Entity {
     private final ArrowManager arrowManager;
     private static final float INVINCIBLITY_TIME = 0.43f;
     private float timeBetweenHits;
-    private Sprite sprite;
+    private final Sprite sprite;
     private boolean isFlipped;
     public Player(float x, float y, Detection detector) {
         super(new Texture("Entities/player.png"), x, y, 100, 20, detector, 200);
@@ -70,7 +70,7 @@ public class Player extends Entity {
         if (this.timeBetweenHits >= INVINCIBLITY_TIME){
            this.timeBetweenHits = 0;
            this.setHp(this.getHp() - dmg);
-//           System.out.println(this.getHp());
+           System.out.println(this.getHp());
         }
     }
 

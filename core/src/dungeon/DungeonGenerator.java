@@ -38,7 +38,7 @@ public class DungeonGenerator {
                     previous = this.connectRooms(current, previous);
                 }
             }else{
-                boolean isSpecial = ((random.nextInt(100) + 1) <= 40);
+                boolean isSpecial = ((random.nextInt(100) + 1) <= 30);
                 if (isSpecial){
                     boolean isTreasureRoom = ((random.nextInt(100) + 1) <= 60);
                     if (isTreasureRoom){
