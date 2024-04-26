@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class FireballManager {
-    private ArrayList<Fireball> fireballs;
+    private final ArrayList<Fireball> fireballs;
     private final Detection detector;
     private static final float FIREBALL_COOLDOWN = 3;
     private float fireballTimer;
-    private float fireballSpeed;
+    private final float fireballSpeed;
 
     public FireballManager(Detection detector,float fireballSpeed) {
         this.detector = detector;

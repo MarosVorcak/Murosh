@@ -7,7 +7,7 @@ import logic.Hitbox;
 public abstract class Projectile {
     private float x;
     private float y;
-    private float speed;
+    private final float speed;
     private final Hitbox hitbox;
     private final Texture texture;
     private float lifeTime;

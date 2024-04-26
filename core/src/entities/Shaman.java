@@ -21,7 +21,9 @@ public class Shaman extends Enemy{
     }
 
     public void shootFireball(Player player, SpriteBatch batch, float deltaTime){
-        this.fireballManager.shootFireballs(this.getX() + (float) this.getTexture().getWidth() / 2, this.getY() + (float) this.getTexture().getHeight() / 4, this.calculateAngleToPlayer(player),deltaTime);
+        float angle = this.calculateAngleToPlayer(player);
+//        System.out.println(angle);
+        this.fireballManager.shootFireballs(this.getX() + (float) this.getTexture().getWidth() / 2, this.getY() + (float) this.getTexture().getHeight() / 4, angle,deltaTime);
         this.fireballManager.renderAndUpdateFireballs(deltaTime,batch,player,this.getAtk());
     }
     private float calculateAngleToPlayer(Player player){

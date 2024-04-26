@@ -84,11 +84,11 @@
 </data>
  </layer>
  <objectgroup id="6" name="DangerObjects">
-  <object id="12" x="415.333" y="287.333" width="160" height="128"/>
-  <object id="13" x="159.333" y="160" width="96" height="96"/>
-  <object id="14" x="160" y="511.333" width="96" height="96"/>
-  <object id="15" x="767.333" y="512" width="96" height="96"/>
-  <object id="16" x="766.667" y="159.333" width="96" height="96"/>
+  <object id="12" x="420.083" y="292.083" width="151.5" height="118.25"/>
+  <object id="13" x="164.583" y="163.75" width="87.5" height="86.5"/>
+  <object id="14" x="163.75" y="516.083" width="88" height="86.25"/>
+  <object id="15" x="771.583" y="516" width="87.5" height="85.75"/>
+  <object id="16" x="772.417" y="164.333" width="87.75" height="86"/>
  </objectgroup>
  <objectgroup id="3" name="Collision">
   <object id="1" x="29.4368" y="30.9184" width="449.25" height="32"/>

@@ -22,6 +22,7 @@ public class Player extends Entity {
         this.arrowManager = new ArrowManager(detector);
         this.timeBetweenHits = 0;
         this.isFlipped = false;
+        this.getHitbox().getRectangle().set(this.getX() + 32, this.getY(), this.getTexture().getWidth() -64, this.getTexture().getHeight() - 42);
     }
 
     @Override
