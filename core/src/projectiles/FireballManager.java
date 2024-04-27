@@ -44,8 +44,7 @@ public class FireballManager {
             }
         }
     }
-
-    public float getFireballSpeed() {
-        return this.fireballSpeed;
+    public boolean isFireballOnCD(){
+        return this.fireballTimer < FIREBALL_COOLDOWN;
     }
 }

@@ -50,9 +50,6 @@ public class Room {
             Enemy enemy = iterator.next();
             enemy.update(this.player, deltaTime);
             enemy.render(batch);
-            if (enemy instanceof Boss){
-                ((Boss) enemy).fireballBarage(deltaTime, this.player, batch);
-            }
             if (enemy instanceof Shaman){
                 ((Shaman) enemy).shootFireball(this.player, batch, deltaTime);
             }
