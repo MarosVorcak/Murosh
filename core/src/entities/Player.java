@@ -17,50 +17,50 @@ public class Player extends Entity {
     private final Sprite sprite;
     private boolean isFlipped;
     public Player(float x, float y, Detection detector) {
-        super(new Texture("Entities/player.png"), x, y, 100, 20, detector, 200);
+        super(new Texture("Entities/player.png"), x, y, 100, 120, detector, 200);
         this.sprite = new Sprite(this.getTexture());
         this.arrowManager = new ArrowManager(detector);
         this.timeBetweenHits = 0;
         this.isFlipped = false;
-        this.getHitbox().getRectangle().set(this.getX() + 32, this.getY(), this.getTexture().getWidth() -64, this.getTexture().getHeight() - 42);
+        this.getHitbox().getRectangle().set(this.getX() + 32, this.getY(), this.getTexture().getWidth() - 64, this.getTexture().getHeight() - 42);
     }
 
     @Override
     public void update(Player player, float deltaTime) {
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            this.moveOnY(this.getSpeed()*deltaTime);
+            this.moveOnY(this.getSpeed() * deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            this.moveOnY(-this.getSpeed()*deltaTime);
+            this.moveOnY(-this.getSpeed() * deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            if(this.isFlipped){
+            if (this.isFlipped) {
                 this.isFlipped = false;
-                this.sprite.flip(true,false);
+                this.sprite.flip(true, false);
             }
-            this.moveOnX(this.getSpeed()*deltaTime);
+            this.moveOnX(this.getSpeed() * deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            if(!this.isFlipped){
+            if (!this.isFlipped) {
                 this.isFlipped = true;
-                this.sprite.flip(true,false);
+                this.sprite.flip(true, false);
             }
-            this.moveOnX(-this.getSpeed()*deltaTime);
+            this.moveOnX(-this.getSpeed() * deltaTime);
         }
         this.getHitboxRectangle().setPosition(this.getX() + 32, this.getY());
     }
 
-    private void moveOnX(float distance){
+    private void moveOnX(float distance) {
         float newX = this.getX() + distance;
         this.getHitboxRectangle().setPosition(newX + 32, this.getY());
-        if (!this.getDetector().wallCollision(this.getHitboxRectangle())){
+        if (!this.getDetector().wallCollision(this.getHitboxRectangle())) {
             this.setX(newX);
         }
     }
-    private void moveOnY(float distance){
+    private void moveOnY(float distance) {
         float newY = this.getY() + distance;
         this.getHitboxRectangle().setPosition(this.getX() + 32, newY);
-        if (!this.getDetector().wallCollision(this.getHitboxRectangle())){
+        if (!this.getDetector().wallCollision(this.getHitboxRectangle())) {
             this.setY(newY);
         }
     }
@@ -68,10 +68,10 @@ public class Player extends Entity {
     @Override
     public void takeDMG(int dmg, char directionOfAttack, float deltaTime) {
         this.timeBetweenHits += deltaTime;
-        if (this.timeBetweenHits >= INVINCIBLITY_TIME){
-           this.timeBetweenHits = 0;
-           this.setHp(this.getHp() - dmg);
-           System.out.println(this.getHp());
+        if (this.timeBetweenHits >= INVINCIBLITY_TIME) {
+            this.timeBetweenHits = 0;
+            this.setHp(this.getHp() - dmg);
+            System.out.println(this.getHp());
         }
     }
 

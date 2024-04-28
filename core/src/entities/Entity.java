@@ -29,7 +29,7 @@ public abstract class Entity {
 
     public abstract void update(Player player, float deltaTime);
 
-    public abstract void takeDMG(int dmg, char directionOfAttack,float deltaTime);
+    public abstract void takeDMG(int dmg, char directionOfAttack, float deltaTime);
 
 
     public boolean isAlive() {
