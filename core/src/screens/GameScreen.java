@@ -1,7 +1,6 @@
-package Screens;
+package screens;
 
 import dungeon.Dungeon;
-import dungeon.Room;
 import entities.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -19,6 +18,7 @@ public class GameScreen implements Screen {
 
 
     public GameScreen(MainGame game) {
+
         this.game = game;
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
         this.dungeon = new Dungeon(this.detection);
         this.detection.setMap(this.dungeon.getCurrentRoom().getMap());
         this.dungeon.getCurrentRoom().setPlayer(new Player( 100, 100, this.detection));
-        this.dungeon.getCurrentRoom().addEnemy(new Shaman(400, 400, this.detection));
+//        this.dungeon.getCurrentRoom().addEnemy(new Shaman(400, 400, this.detection));
         this.mapRenderer = new OrthogonalTiledMapRenderer(this.dungeon.getCurrentRoom().getMap());
     }
     @Override
@@ -39,9 +39,9 @@ public class GameScreen implements Screen {
         this.mapRenderer.render();
         this.game.getBatch().begin();
         this.dungeon.getCurrentRoom().renderPlayer(this.game.getBatch(), deltaTime);
-        this.dungeon.getCurrentRoom().renderEnemies(this.game.getBatch(),deltaTime);
+        this.dungeon.getCurrentRoom().renderEnemies(this.game.getBatch(), deltaTime);
         this.game.getBatch().end();
-        if (this.dungeon.swithcedRooms()){
+        if (this.dungeon.swithcedRooms()) {
             this.detection.setMap(this.dungeon.getCurrentRoom().getMap());
             this.mapRenderer.setMap(this.dungeon.getCurrentRoom().getMap());
         }

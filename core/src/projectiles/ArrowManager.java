@@ -63,10 +63,10 @@ public class ArrowManager {
             arrow.getHitbox().getRectangle().setPosition(arrow.getX(), arrow.getY());
             arrow.render(batch);
             for (Enemy enemy : enemies) {
-                    if (this.detector.rectangleToRectangle(enemy.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
-                        enemy.takeDMG(playerDMG, arrow.getDirection(), deltaTime);
-                        iterator.remove();
-                    }
+                if (this.detector.rectangleToRectangle(enemy.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
+                    enemy.takeDMG(playerDMG, arrow.getDirection(), deltaTime);
+                    iterator.remove();
+                }
             }
             if (arrow.getLifeTime() >= ARROW_LIFE_TIME || this.detector.wallCollision(arrow.getHitbox().getRectangle())) {
                 iterator.remove();

@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
-import Screens.GameScreen;
+import screens.GameScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,7 +10,7 @@ public class MainGame extends Game {
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
-        this.setScreen(new GameScreen(this));
+		this.setScreen(new GameScreen(this));
 		this.getScreen().show();
 	}
 
