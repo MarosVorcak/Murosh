@@ -3,7 +3,7 @@ package com.mygdx.game.logic;
 import com.badlogic.gdx.math.MathUtils;
 import com.mygdx.game.entities.Enemy;
 
-public class Lunger{
+public class Lunger {
     private final float chargeDuration;
     private final float shakeAmount;
     private final float lungeDistance;
@@ -29,9 +29,9 @@ public class Lunger{
     }
 
     public void update(float deltaTime, float playerX, float playerY) {
-        if(!this.isLungeOnCooldown()){
-            if(this.chargeUp(deltaTime)){
-                if(this.lunge(deltaTime,playerX,playerY)){
+        if (!this.isLungeOnCooldown()) {
+            if (this.chargeUp(deltaTime)) {
+                if (this.lunge(deltaTime, playerX, playerY)) {
                     this.isLunging = false;
                     this.chargeUpTimer = 0;
                     this.timeBetweenLunges = 0;
@@ -42,7 +42,7 @@ public class Lunger{
 
     private boolean chargeUp(float deltaTime) {
         this.chargeUpTimer += deltaTime;
-        if (chargeUpTimer <= chargeDuration) {
+        if (this.chargeUpTimer <= this.chargeDuration) {
             float shakeX = MathUtils.random(-this.shakeAmount, this.shakeAmount);
             float shakeY = MathUtils.random(-this.shakeAmount, this.shakeAmount);
             this.enemy.setX(this.enemy.getX() + shakeX);
@@ -60,11 +60,11 @@ public class Lunger{
         if (this.lungeDistanceTraveled <= this.lungeDistance) {
             float deltaX = lungeTargetX - this.enemy.getX();
             float deltaY = lungeTargetY - this.enemy.getY();
-            float angleToPlayer = (float) Math.atan2(deltaY, deltaX);
+            float angleToPlayer = (float)Math.atan2(deltaY, deltaX);
             this.enemy.setX(this.enemy.getX() + (float)(Math.cos(angleToPlayer) * this.lungeSpeed * deltaTime));
             this.enemy.setY(this.enemy.getY() + (float)(Math.sin(angleToPlayer) * this.lungeSpeed * deltaTime));
             this.lungeDistanceTraveled += (float)Math.sqrt(Math.pow(oldX - this.enemy.getX(), 2) + Math.pow(oldY - this.enemy.getY(), 2));
-            this.enemy.getHitbox().getRectangle().setPosition(this.enemy.getX(),this.enemy.getY());
+            this.enemy.getHitbox().getRectangle().setPosition(this.enemy.getX(), this.enemy.getY());
             return false;
         } else {
             this.lungeDistanceTraveled = 0;
@@ -76,11 +76,11 @@ public class Lunger{
         return this.timeBetweenLunges < this.lungeCooldown;
     }
 
-    public void addToTimeBetweenLunges(float deltaTime){
+    public void addToTimeBetweenLunges(float deltaTime) {
         this.timeBetweenLunges += deltaTime;
     }
 
-    public boolean isLunging(){
+    public boolean isLunging() {
         return this.isLunging;
     }
 }

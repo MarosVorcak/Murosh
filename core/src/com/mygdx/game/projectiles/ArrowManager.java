@@ -27,19 +27,19 @@ public class ArrowManager {
             case 'U':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerSize / 2 , playerY + playerSize / 2 , this.createTexture(direction), direction,200));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2 , playerY + playerSize / 2 , this.createTexture(direction), direction, 200));
                 }
                 break;
             case 'D':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY, this.createTexture(direction), direction,200));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY, this.createTexture(direction), direction, 200));
                 }
                 break;
             case 'R':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
                     this.betweenShotTimer = 0;
-                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY + playerSize / 4, this.createTexture(direction), direction,200));
+                    this.arrows.add(new Arrow(playerX + playerSize / 2, playerY + playerSize / 4, this.createTexture(direction), direction, 200));
                 }
 
                 break;

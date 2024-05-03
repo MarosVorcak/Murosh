@@ -2,7 +2,11 @@ package com.mygdx.game.dungeon;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.mygdx.game.entities.*;
+import com.mygdx.game.entities.Boss;
+import com.mygdx.game.entities.Enemy;
+import com.mygdx.game.entities.Goblin;
+import com.mygdx.game.entities.Shaman;
+import com.mygdx.game.entities.Slime;
 import com.mygdx.game.logic.Detection;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,7 +19,7 @@ public class DungeonGenerator {
         this.detector = detector;
     }
 
-    public Room generateDungeon(){
+    public Room generateDungeon() {
         TreasureRoom spawn = new TreasureRoom();
         Room previous = spawn;
         Room current = null;
@@ -24,107 +28,107 @@ public class DungeonGenerator {
         Random random = new Random();
         while (true) {
             roomCounter++;
-            if (roomCounter >= 15){
+            if (roomCounter >= 15) {
                 boolean isBossRoom = ((random.nextInt(100) + 1) <= bossRoomChance);
-                if(isBossRoom){
+                if (isBossRoom) {
                     current = new BossRoom();
-                    current.addEnemy(new Boss(400,400,this.detector));
+                    current.addEnemy(new Boss(400, 400, this.detector));
                     previous = this.connectRooms(current, previous);
                     break;
-                }else{
+                } else {
                     bossRoomChance += 10;
                     current = this.generateNormalRoom(random);
-                    this.spawnEnemies(current,random);
+                    this.spawnEnemies(current, random);
                     previous = this.connectRooms(current, previous);
                 }
-            }else{
+            } else {
                 boolean isSpecial = ((random.nextInt(100) + 1) <= 30);
-                if (isSpecial){
+                if (isSpecial) {
                     boolean isTreasureRoom = ((random.nextInt(100) + 1) <= 60);
-                    if (isTreasureRoom){
+                    if (isTreasureRoom) {
                         current = new TreasureRoom();
                         previous = this.connectRooms(current, previous);
-                    }else{
+                    } else {
                         current = new TrapRoom();
                         previous = this.connectRooms(current, previous);
                     }
-                }else{
+                } else {
                     current = this.generateNormalRoom(random);
-                    this.spawnEnemies(current,random);
+                    this.spawnEnemies(current, random);
                     previous = this.connectRooms(current, previous);
                 }
             }
         }
         return spawn;
     }
-    private Room generateNormalRoom(Random random){
+    private Room generateNormalRoom(Random random) {
         int templateNumber = random.nextInt(4) + 1;
         return new Room("Maps/normal_room" + templateNumber + ".tmx");
     }
-    private Room connectRooms(Room current, Room previous){
+    private Room connectRooms(Room current, Room previous) {
         current.connectRoom(previous);
         previous.connectRoom(current);
         previous = current;
         return previous;
     }
-    private void spawnEnemies(Room room,Random random){
+    private void spawnEnemies(Room room, Random random) {
         Iterator<MapObject> iterator = room.getMap().getLayers().get("Spawns").getObjects().iterator();
         ArrayList<Enemy> spawnedEnemies = new ArrayList<Enemy>();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             MapObject object = iterator.next();
             float spawnX = ((RectangleMapObject)object).getRectangle().x;
             float spawnY = ((RectangleMapObject)object).getRectangle().y;
-            int enemyType = random.nextInt(3)+1;
-            switch (enemyType){
+            int enemyType = random.nextInt(3) + 1;
+            switch (enemyType) {
                 case 1:
-                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)){
-                       Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
-                       room.addEnemy(goblin);
-                       spawnedEnemies.add(goblin);
-                    }else{
-                        int replacementEnemy = random.nextInt(2)+1;
-                        if (replacementEnemy == 1){
-                            Slime slime = new Slime(spawnX,spawnY,this.detector);
+                    if (!this.checkIfEnemyExists(enemyType, spawnedEnemies)) {
+                        Goblin goblin = new Goblin(spawnX, spawnY, this.detector);
+                        room.addEnemy(goblin);
+                        spawnedEnemies.add(goblin);
+                    } else {
+                        int replacementEnemy = random.nextInt(2) + 1;
+                        if (replacementEnemy == 1) {
+                            Slime slime = new Slime(spawnX, spawnY, this.detector);
                             room.addEnemy(slime);
                             spawnedEnemies.add(slime);
-                        }else{
-                            Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
+                        } else {
+                            Shaman shaman = new Shaman(spawnX, spawnY, this.detector);
                             room.addEnemy(shaman);
                             spawnedEnemies.add(shaman);
                         }
                     }
                     break;
                 case 2:
-                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)){
-                        Slime slime = new Slime(spawnX,spawnY,this.detector);
+                    if (!this.checkIfEnemyExists(enemyType, spawnedEnemies)) {
+                        Slime slime = new Slime(spawnX, spawnY, this.detector);
                         room.addEnemy(slime);
                         spawnedEnemies.add(slime);
-                    }else{
-                        int replacementEnemy = random.nextInt(2)+1;
-                        if (replacementEnemy == 1){
-                            Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
+                    } else {
+                        int replacementEnemy = random.nextInt(2) + 1;
+                        if (replacementEnemy == 1) {
+                            Goblin goblin = new Goblin(spawnX, spawnY, this.detector);
                             room.addEnemy(goblin);
                             spawnedEnemies.add(goblin);
-                        }else{
-                            Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
+                        } else {
+                            Shaman shaman = new Shaman(spawnX, spawnY, this.detector);
                             room.addEnemy(shaman);
                             spawnedEnemies.add(shaman);
                         }
                     }
                     break;
                 case 3:
-                    if (!this.checkIfEnemyExists(enemyType,spawnedEnemies)) {
-                        Shaman shaman = new Shaman(spawnX,spawnY,this.detector);
+                    if (!this.checkIfEnemyExists(enemyType, spawnedEnemies)) {
+                        Shaman shaman = new Shaman(spawnX, spawnY, this.detector);
                         room.addEnemy(shaman);
                         spawnedEnemies.add(shaman);
-                    }else{
-                        int replacementEnemy = random.nextInt(2)+1;
-                        if (replacementEnemy == 1){
-                            Slime slime = new Slime(spawnX,spawnY,this.detector);
+                    } else {
+                        int replacementEnemy = random.nextInt(2) + 1;
+                        if (replacementEnemy == 1) {
+                            Slime slime = new Slime(spawnX, spawnY, this.detector);
                             room.addEnemy(slime);
                             spawnedEnemies.add(slime);
-                        }else{
-                            Goblin goblin = new Goblin(spawnX,spawnY,this.detector);
+                        } else {
+                            Goblin goblin = new Goblin(spawnX, spawnY, this.detector);
                             room.addEnemy(goblin);
                             spawnedEnemies.add(goblin);
                         }
@@ -133,34 +137,34 @@ public class DungeonGenerator {
             }
         }
     }
-    private boolean checkIfEnemyExists(int enemyType,ArrayList<Enemy>enemies){
+    private boolean checkIfEnemyExists(int enemyType, ArrayList<Enemy>enemies) {
         if (enemies.isEmpty()) {
             return false;
-        }else{
+        } else {
             switch (enemyType) {
                 case 1:
                     for (Enemy enemy : enemies) {
-                        if(enemy instanceof Goblin){
+                        if (enemy instanceof Goblin) {
                             return true;
                         }
                     }
                     break;
                 case 2:
                     for (Enemy enemy : enemies) {
-                        if(enemy instanceof Slime){
+                        if (enemy instanceof Slime) {
                             return true;
                         }
                     }
                     break;
                 case 3:
                     for (Enemy enemy : enemies) {
-                        if(enemy instanceof Shaman){
+                        if (enemy instanceof Shaman) {
                             return true;
                         }
                     }
                     break;
-                }
             }
+        }
         return false;
     }
 }

@@ -11,17 +11,17 @@ public class Inventory {
     public Inventory() {
         this.items = new HashMap<>();
     }
-    public void addItem(Item item){
+    public void addItem(Item item) {
         this.items.put(item.getName(), item);
     }
-    public Optional<Item> getItem(String name){
+    public Optional<Item> getItem(String name) {
         return Optional.ofNullable(this.items.get(name));
     }
-    public void removeItem(String name){
+    public void removeItem(String name) {
         this.items.remove(name);
     }
 
-    public void applyItem(String name, Player player){
+    public void applyItem(String name, Player player) {
         Optional<Item> item = this.getItem(name);
         item.ifPresent(value -> value.applyEffect(player));
     }

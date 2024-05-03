@@ -22,7 +22,7 @@ public class Enemy extends Entity {
     @Override
     public void takeDMG(int dmg, char directionOfAttack, float deltaTime) {
         this.setHp(this.getHp() - dmg);
-        switch (directionOfAttack){
+        switch (directionOfAttack) {
             case 'U':
                 this.setY(this.getY() + 10);
                 break;
@@ -37,8 +37,5 @@ public class Enemy extends Entity {
                 break;
         }
     }
-
-    //Shaman bude strielat mozno homing
-    //Boos bude striet omnidirectional a lungovat
 
 }

@@ -78,9 +78,9 @@ public class Room {
         this.player.shoot(deltaTime, batch, this.enemies);
     }
 
-    public void objectInteractions(float deltaTime, Detection detector){
-        if (detector.dangerObjectCollision(this.player.getHitboxRectangle())){
-            this.player.takeDMG(10,Character.MIN_VALUE,deltaTime);
+    public void objectInteractions(float deltaTime, Detection detector) {
+        if (detector.dangerObjectCollision(this.player.getHitboxRectangle())) {
+            this.player.takeDMG(10, Character.MIN_VALUE, deltaTime);
         }
     }
 

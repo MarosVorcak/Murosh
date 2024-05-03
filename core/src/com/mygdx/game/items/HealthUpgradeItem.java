@@ -17,7 +17,7 @@ public class HealthUpgradeItem implements Item {
 
     @Override
     public void applyEffect(Player player) {
-        player.setHp(player.getHp() + this.ammount/2);
+        player.setHp(player.getHp() + this.ammount / 2);
         player.addToMaxHp(this.ammount);
     }
 }

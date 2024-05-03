@@ -102,7 +102,7 @@ public class Player extends Entity {
         batch.draw(this.sprite, this.getX(), this.getY());
     }
 
-    public void addToMaxHp(int ammount){
+    public void addToMaxHp(int ammount) {
         this.maxHp += ammount;
     }
     

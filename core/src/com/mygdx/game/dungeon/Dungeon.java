@@ -18,16 +18,16 @@ public class Dungeon {
     public Room getCurrentRoom() {
         return this.currentRoom;
     }
-    public boolean swithcedRooms(){
-        if (this.currentRoom.checkIfRoomIsExitable()){
-            if (this.detector.doorCollision(this.currentRoom.getPlayer().getHitboxRectangle())){
+    public boolean swithcedRooms() {
+        if (this.currentRoom.checkIfRoomIsExitable()) {
+            if (this.detector.doorCollision(this.currentRoom.getPlayer().getHitboxRectangle())) {
                 this.currentRoom = this.roomSwitcher.switchRooms();
                 return true;
             }
         }
         return false;
     }
-    public void dangerObjects(float deltaTime){
+    public void dangerObjects(float deltaTime) {
         this.currentRoom.objectInteractions(deltaTime, this.detector);
     }
 }

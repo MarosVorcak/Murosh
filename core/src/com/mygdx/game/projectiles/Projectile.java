@@ -20,8 +20,8 @@ public abstract class Projectile {
         this.hitbox = new Hitbox(this.x, this.y, this.texture.getWidth(), this.texture.getHeight());
     }
     public abstract void update(float deltaTime);
-    public void render(SpriteBatch batch){
-        batch.draw(this.texture,this.x,this.y);
+    public void render(SpriteBatch batch) {
+        batch.draw(this.texture, this.x, this.y);
     }
 
     public float getX() {

@@ -1,6 +1,6 @@
 package com.mygdx.game.dungeon;
 
-public class SpawnRoom extends Room{
+public class SpawnRoom extends Room {
     /**
      * tu budu vykreselene tutorial obrazky
      */

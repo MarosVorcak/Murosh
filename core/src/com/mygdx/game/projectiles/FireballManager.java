@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class FireballManager {
     private final ArrayList<Fireball> fireballs;
     private final Detection detector;
-    private static final float FIREBALL_COOLDOWN = 3;
+    public static final float FIREBALL_COOLDOWN = 3;
     private float fireballTimer;
     private final float fireballSpeed;
 
