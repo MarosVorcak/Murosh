@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.game.entities.Enemy;
 import com.mygdx.game.entities.Player;
 import com.mygdx.game.entities.Shaman;
+import com.mygdx.game.items.ItemType;
 import com.mygdx.game.logic.Detection;
 
 import java.util.ArrayList;
@@ -80,7 +81,9 @@ public class Room {
 
     public void objectInteractions(float deltaTime, Detection detector) {
         if (detector.dangerObjectCollision(this.player.getHitboxRectangle())) {
-            this.player.takeDMG(10, Character.MIN_VALUE, deltaTime);
+            if(!this.player.getInventory().hasItem(ItemType.IRON_BOOTS)) {
+                this.player.takeDMG(10, Character.MIN_VALUE, deltaTime);
+            }
         }
     }
 

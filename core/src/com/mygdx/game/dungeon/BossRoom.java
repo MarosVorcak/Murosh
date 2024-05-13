@@ -24,9 +24,6 @@ public class BossRoom extends Room {
                 boss.update(this.getPlayer(), deltaTime);
                 boss.render(batch);
                 boss.fireballBarage(deltaTime, this.getPlayer(), batch);
-                if (!boss.isAlive()) {
-                    iterator.remove();
-                }
                 if (boss.getDetector().rectangleToRectangle(boss.getHitboxRectangle(), this.getPlayer().getHitboxRectangle())) {
                     this.getPlayer().takeDMG(boss.getAtk(), Character.MIN_VALUE, deltaTime);
                 }

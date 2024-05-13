@@ -15,6 +15,11 @@ public class AttackUpgradeItem implements Item {
     }
 
     @Override
+    public String getName() {
+        return "Arrow sharpener";
+    }
+
+    @Override
     public void applyEffect(Player player) {
         player.setAtk((int)(player.getAtk() * this.multiplier));
     }

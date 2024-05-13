@@ -27,7 +27,7 @@ public class Dungeon {
         }
         return false;
     }
-    public void dangerObjects(float deltaTime) {
+    public void objectInteraction(float deltaTime) {
         this.currentRoom.objectInteractions(deltaTime, this.detector);
     }
 }

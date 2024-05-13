@@ -4,6 +4,11 @@ import com.mygdx.game.entities.Player;
 
 public class IronBoots implements SpecialItem{
     @Override
+    public String getName() {
+        return "Mythril boots";
+    }
+
+    @Override
     public void applyEffect(Player player) {
 
     }

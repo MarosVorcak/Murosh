@@ -105,7 +105,10 @@ public class Player extends Entity {
     public void addToMaxHp(int ammount) {
         this.maxHp += ammount;
     }
-    
+
+    public int getMaxHp() {
+        return this.maxHp;
+    }
 
     public ArrowManager getArrowManager() {
         return this.arrowManager;

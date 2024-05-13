@@ -23,6 +23,14 @@ public class Inventory {
         }
         return null;
     }
+    public boolean hasItem(ItemType type) {
+        for (Item item : items) {
+            if(item.getType() == type) {
+                return true;
+            }
+        }
+        return false;
+    }
     public void removeItem(ItemType type) {
         Iterator<Item> iterator = this.items.iterator();
         while (iterator.hasNext()){

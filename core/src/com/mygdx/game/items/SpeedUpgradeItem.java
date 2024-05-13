@@ -6,12 +6,17 @@ public class SpeedUpgradeItem implements Item {
     private final int ammount;
 
     public SpeedUpgradeItem() {
-        this.ammount = 20;
+        this.ammount = 40;
     }
 
     @Override
     public ItemType getType() {
         return ItemType.SPEED_UP;
+    }
+
+    @Override
+    public String getName() {
+        return "Cofee";
     }
 
     @Override

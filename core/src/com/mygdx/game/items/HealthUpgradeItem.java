@@ -16,6 +16,11 @@ public class HealthUpgradeItem implements Item {
     }
 
     @Override
+    public String getName() {
+        return "Magical bread";
+    }
+
+    @Override
     public void applyEffect(Player player) {
         player.setHp(player.getHp() + this.ammount / 2);
         player.addToMaxHp(this.ammount);
