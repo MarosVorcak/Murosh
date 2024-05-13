@@ -11,8 +11,8 @@ public class HealthUpgradeItem implements Item {
     }
 
     @Override
-    public String getName() {
-        return "HealthUp";
+    public ItemType getType() {
+        return ItemType.HEALTH_UP;
     }
 
     @Override

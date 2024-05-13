@@ -2,27 +2,43 @@ package com.mygdx.game.items;
 
 import com.mygdx.game.entities.Player;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
 
 public class Inventory {
-    private final HashMap<String, Item> items;
+    private final ArrayList<Item> items;
 
     public Inventory() {
-        this.items = new HashMap<>();
+        this.items = new ArrayList<>();
     }
     public void addItem(Item item) {
-        this.items.put(item.getName(), item);
+        this.items.add(item);
     }
-    public Optional<Item> getItem(String name) {
-        return Optional.ofNullable(this.items.get(name));
+    public Item getItem(ItemType type) {
+        for (Item item : this.items) {
+            if (item.getType() == type){
+                return item;
+            }
+        }
+        return null;
     }
-    public void removeItem(String name) {
-        this.items.remove(name);
+    public void removeItem(ItemType type) {
+        Iterator<Item> iterator = this.items.iterator();
+        while (iterator.hasNext()){
+            Item item = iterator.next();
+            if (item.getType() == type) {
+                iterator.remove();
+                break;
+            }
+        }
     }
 
-    public void applyItem(String name, Player player) {
-        Optional<Item> item = this.getItem(name);
-        item.ifPresent(value -> value.applyEffect(player));
+    public void applyItem(ItemType type, Player player) {
+        this.getItem(type).applyEffect(player);
+    }
+    public void specialEffect(ItemType type, Player player) {
+        SpecialItem item = (SpecialItem) this.getItem(type);
+        item.speciallEffect(player);
     }
 }

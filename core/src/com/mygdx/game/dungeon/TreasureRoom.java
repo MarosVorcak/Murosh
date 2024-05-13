@@ -1,10 +1,6 @@
 package com.mygdx.game.dungeon;
 
-import com.mygdx.game.items.AttackUpgradeItem;
-import com.mygdx.game.items.HealthUpgradeItem;
-import com.mygdx.game.items.Item;
-import com.mygdx.game.items.ItemType;
-import com.mygdx.game.items.SpeedUpgradeItem;
+import com.mygdx.game.items.*;
 import com.mygdx.game.logic.Detection;
 
 import java.util.Random;
@@ -17,7 +13,7 @@ public class TreasureRoom extends Room {
     public TreasureRoom() {
         super("Maps/treasure_room.tmx");
         this.chestItem = this.generateItem();
-        System.out.println(this.chestItem.getName());
+        System.out.println(this.chestItem.getType());
     }
 
     @Override
@@ -25,7 +21,9 @@ public class TreasureRoom extends Room {
         if (this.chestItem != null) {
             if (detector.specialObjectCollision(this.getPlayer().getHitboxRectangle())) {
                 this.getPlayer().getInventory().addItem(this.chestItem);
-                this.getPlayer().getInventory().applyItem(this.chestItem.getName(), this.getPlayer());
+                if (!(this.chestItem instanceof SpecialItem)){
+                    this.getPlayer().getInventory().applyItem(this.chestItem.getType(), this.getPlayer());
+                }
                 this.chestItem = null;
             }
         }
@@ -41,6 +39,10 @@ public class TreasureRoom extends Room {
                 return new AttackUpgradeItem();
             case SPEED_UP:
                 return new SpeedUpgradeItem();
+            case IRON_BOOTS:
+                return new IronBoots();
+            case DAMAGE_SHIELD:
+                return new DamageShield();
             default:
                 return null;
         }
