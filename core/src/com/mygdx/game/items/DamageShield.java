@@ -2,7 +2,7 @@ package com.mygdx.game.items;
 
 import com.mygdx.game.entities.Player;
 
-public class DamageShield implements SpecialItem{
+public class DamageShield implements Defensivetem {
     @Override
     public String getName() {
         return "Mythril cloak";
@@ -19,7 +19,7 @@ public class DamageShield implements SpecialItem{
     }
 
     @Override
-    public void speciallEffect(Player player) {
-
+    public int calculateDmg(int damage) {
+        return damage / 2;
     }
 }

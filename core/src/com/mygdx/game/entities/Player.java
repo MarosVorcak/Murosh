@@ -5,7 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.items.Defensivetem;
 import com.mygdx.game.items.Inventory;
+import com.mygdx.game.items.ItemType;
 import com.mygdx.game.projectiles.ArrowManager;
 import com.mygdx.game.logic.Detection;
 
@@ -75,7 +77,12 @@ public class Player extends Entity {
         this.timeBetweenHits += deltaTime;
         if (this.timeBetweenHits >= INVINCIBLITY_TIME) {
             this.timeBetweenHits = 0;
-            this.setHp(this.getHp() - dmg);
+            if(this.inventory.hasItem(ItemType.DAMAGE_SHIELD)){
+                Defensivetem cloak = (Defensivetem) this.inventory.getItem(ItemType.DAMAGE_SHIELD);
+                this.setHp(this.getHp() - cloak.calculateDmg(dmg));
+            }else{
+                this.setHp(this.getHp() - dmg);
+            }
             System.out.println(this.getHp());
         }
     }

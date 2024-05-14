@@ -2,7 +2,7 @@ package com.mygdx.game.items;
 
 import com.mygdx.game.entities.Player;
 
-public class IronBoots implements SpecialItem{
+public class IronBoots implements Defensivetem {
     @Override
     public String getName() {
         return "Mythril boots";
@@ -19,7 +19,7 @@ public class IronBoots implements SpecialItem{
     }
 
     @Override
-    public void speciallEffect(Player player) {
-
+    public int calculateDmg(int damage) {
+        return damage - 5;
     }
 }

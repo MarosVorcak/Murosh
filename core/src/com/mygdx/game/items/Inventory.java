@@ -4,7 +4,6 @@ import com.mygdx.game.entities.Player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Optional;
 
 public class Inventory {
     private final ArrayList<Item> items;
@@ -46,7 +45,7 @@ public class Inventory {
         this.getItem(type).applyEffect(player);
     }
     public void specialEffect(ItemType type, Player player) {
-        SpecialItem item = (SpecialItem) this.getItem(type);
+        Defensivetem item = (Defensivetem) this.getItem(type);
         item.speciallEffect(player);
     }
 }
