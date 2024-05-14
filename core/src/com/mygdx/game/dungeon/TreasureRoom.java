@@ -20,7 +20,7 @@ public class TreasureRoom extends Room {
                 this.healPlayer();
                 this.getPlayer().getInventory().addItem(this.chestItem);
 
-                if (!(this.chestItem instanceof SpecialItem)){
+                if (!(this.chestItem instanceof Defensivetem)){
                     this.getPlayer().getInventory().applyItem(this.chestItem.getType(), this.getPlayer());
                 }
                 this.chestItem = null;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.game.entities.Enemy;
 import com.mygdx.game.entities.Player;
 import com.mygdx.game.entities.Shaman;
+import com.mygdx.game.items.Defensivetem;
 import com.mygdx.game.items.ItemType;
 import com.mygdx.game.logic.Detection;
 
@@ -81,9 +82,11 @@ public class Room {
 
     public void objectInteractions(float deltaTime, Detection detector) {
         if (detector.dangerObjectCollision(this.player.getHitboxRectangle())) {
-            if(!this.player.getInventory().hasItem(ItemType.IRON_BOOTS)) {
-                this.player.takeDMG(10, Character.MIN_VALUE, deltaTime);
+            if (this.player.getInventory().hasItem(ItemType.IRON_BOOTS)){
+                Defensivetem item = (Defensivetem) this.player.getInventory().getItem(ItemType.IRON_BOOTS);
+                this.player.takeDMG(item.calculateDmg(15), Character.MIN_VALUE, deltaTime);
             }
+            this.player.takeDMG(15, Character.MIN_VALUE, deltaTime);
         }
     }
 
