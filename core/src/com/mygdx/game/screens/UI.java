@@ -12,7 +12,7 @@ public class UI {
     private final BitmapFont font;
     private String message;
     private long messageDisplayStart;
-    public static final long MESSAGE_DURATION = 5000;
+    public static final long MESSAGE_DURATION = 3000;
     private TreasureRoom treasureRoom;
 
     public UI(Player player) {
@@ -32,32 +32,34 @@ public class UI {
         this.font.draw(batch, "HP: " + hp + "/" + maxHp, 20, 680);
         this.font.draw(batch, "ATK: " + atk, 20, 640);
         this.font.draw(batch, "SPEED: " + speed, 20, 600);
-
-        this.getMessage();
-        if (message != null) {
+        if (this.message != null) {
             long currentTime = TimeUtils.millis();
-            if (currentTime - messageDisplayStart < MESSAGE_DURATION) {
-                font.draw(batch, message, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+            if (currentTime - this.messageDisplayStart < MESSAGE_DURATION) {
+                this.font.draw(batch, this.message, Gdx.graphics.getWidth() / 2 + 80, Gdx.graphics.getHeight() / 5 - 40);
+            } else {
+                this.message = null;
+                this.messageDisplayStart = 0;
             }
         }
+
     }
 
 
     public void setTreasureRoom(TreasureRoom treasureRoom){
-        this.treasureRoom = treasureRoom;
+        if(this.treasureRoom == null || !this.treasureRoom.equals(treasureRoom)){
+            this.treasureRoom = treasureRoom;
+            if(this.message == null){
+                this.getMessage();
+            }
+        }
     }
     private void getMessage(){
-        if (this.treasureRoom != null) {
-            if(this.treasureRoom.isShowMessage()){
-                if(this.treasureRoom.getChestItem() != null){
-                    this.message = this.treasureRoom.getMessageText();
-                    this.messageDisplayStart = TimeUtils.millis();
-                    System.out.println("I started showing message");
-                }
-            }
-        } else {
-            this.message = null;
-            this.messageDisplayStart = 0;
+        if (this.treasureRoom.getChestItem() != null){
+            this.message = this.treasureRoom.getMessageText();
+            this.messageDisplayStart = TimeUtils.millis();
+        }else{
+            this.message = "This chest is empty";
+            this.messageDisplayStart = TimeUtils.millis();
         }
     }
 }

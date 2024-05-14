@@ -8,11 +8,9 @@ import java.util.Random;
 
 public class TreasureRoom extends Room {
     private Item chestItem;
-    private boolean showMessage;
     public TreasureRoom() {
         super("Maps/treasure_room.tmx");
         this.chestItem = this.generateItem();
-        this.showMessage = false;
     }
 
     @Override
@@ -25,24 +23,18 @@ public class TreasureRoom extends Room {
                 if (!(this.chestItem instanceof SpecialItem)){
                     this.getPlayer().getInventory().applyItem(this.chestItem.getType(), this.getPlayer());
                 }
-                this.showMessage = true;
                 this.chestItem = null;
             }
         }
     }
 
     public String getMessageText(){
-        return "You picked up " + this.chestItem.getName();
+        return "This chest contains " + this.chestItem.getName();
     }
 
     public Item getChestItem() {
         return this.chestItem;
     }
-
-    public boolean isShowMessage() {
-        return this.showMessage;
-    }
-
     private Item generateItem() {
         ItemType randomItem = ItemType.values()[new Random().nextInt(ItemType.values().length)];
         switch (randomItem) {
