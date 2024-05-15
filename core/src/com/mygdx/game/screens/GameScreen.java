@@ -1,5 +1,6 @@
 package com.mygdx.game.screens;
 
+import com.mygdx.game.dungeon.BossRoom;
 import com.mygdx.game.dungeon.Dungeon;
 import com.mygdx.game.dungeon.TreasureRoom;
 import com.mygdx.game.entities.Player;
@@ -38,8 +39,11 @@ public class GameScreen implements Screen {
     @Override
     public void render(float deltaTime) {
         if(!this.dungeon.getCurrentRoom().getPlayer().isAlive()){
-            this.game.setScreen(new MainMenuScreen(this.game));
-            this.dispose();
+            this.game.setScreen(new EndGameScreen(this.game, false));
+            return;
+        }
+        if(this.dungeon.getCurrentRoom() instanceof BossRoom && this.dungeon.getCurrentRoom().checkIfRoomIsExitable()){
+            this.game.setScreen(new EndGameScreen(this.game, true));
             return;
         }
         this.mapRenderer.setView(this.camera);

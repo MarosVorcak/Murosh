@@ -12,11 +12,12 @@ public class MainGame extends Game {
 	public void create () {
 		this.batch = new SpriteBatch();
 		this.setScreen(new MainMenuScreen(this));
+		this.getScreen().show();
 	}
 
 	@Override
 	public void render () {
-		this.getScreen().render(Gdx.graphics.getDeltaTime());
+		super.render();
     }
 
 

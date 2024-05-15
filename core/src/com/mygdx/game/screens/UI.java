@@ -12,7 +12,7 @@ public class UI {
     private final BitmapFont font;
     private String message;
     private long messageDisplayStart;
-    public static final long MESSAGE_DURATION = 3000;
+    public static final long MESSAGE_DURATION = 2000;
     private TreasureRoom treasureRoom;
 
     public UI(Player player) {

@@ -83,7 +83,6 @@ public class Player extends Entity {
             }else{
                 this.setHp(this.getHp() - dmg);
             }
-            System.out.println(this.getHp());
         }
     }
 

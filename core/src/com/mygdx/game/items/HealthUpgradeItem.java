@@ -7,7 +7,7 @@ public class HealthUpgradeItem implements Item {
     private final int ammount;
 
     public HealthUpgradeItem() {
-        this.ammount = 20;
+        this.ammount = 40;
     }
 
     @Override
