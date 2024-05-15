@@ -20,7 +20,6 @@ public class GameScreen implements Screen {
 
 
     public GameScreen(MainGame game) {
-
         this.game = game;
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -38,6 +37,11 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float deltaTime) {
+        if(!this.dungeon.getCurrentRoom().getPlayer().isAlive()){
+            this.game.setScreen(new MainMenuScreen(this.game));
+            this.dispose();
+            return;
+        }
         this.mapRenderer.setView(this.camera);
         this.mapRenderer.render();
         this.game.getBatch().begin();
@@ -81,6 +85,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        this.game.getBatch().dispose();
+        this.mapRenderer.dispose();
+
     }
 }

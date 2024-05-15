@@ -44,8 +44,5 @@ public class Inventory {
     public void applyItem(ItemType type, Player player) {
         this.getItem(type).applyEffect(player);
     }
-    public void specialEffect(ItemType type, Player player) {
-        Defensivetem item = (Defensivetem) this.getItem(type);
-        item.speciallEffect(player);
-    }
+
 }

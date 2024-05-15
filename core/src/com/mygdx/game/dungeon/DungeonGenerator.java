@@ -20,7 +20,7 @@ public class DungeonGenerator {
     }
 
     public Room generateDungeon() {
-        TreasureRoom spawn = new TreasureRoom();
+        SpawnRoom spawn = new SpawnRoom();
         Room previous = spawn;
         Room current = null;
         int roomCounter = 0;
