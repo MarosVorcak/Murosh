@@ -53,7 +53,7 @@ public class Detection {
     }
 
     public boolean doorCollision(Rectangle rectangle) {
-        if(this.doesLayerExist("Doors")) {
+        if (this.doesLayerExist("Doors")) {
             for (MapObject object : this.map.getLayers().get("Doors").getObjects()) {
                 if (object instanceof RectangleMapObject) {
                     if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
@@ -88,7 +88,7 @@ public class Detection {
         }
         return false;
     }
-    private boolean doesLayerExist(String layerName){
+    private boolean doesLayerExist(String layerName) {
         return this.map.getLayers().get(layerName) != null;
     }
 }

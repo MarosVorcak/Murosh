@@ -45,20 +45,17 @@ public class UI {
     }
 
 
-    public void setTreasureRoom(TreasureRoom treasureRoom){
-        if(this.treasureRoom == null || !this.treasureRoom.equals(treasureRoom)){
+    public void setTreasureRoom(TreasureRoom treasureRoom) {
+        if (this.treasureRoom == null || !this.treasureRoom.equals(treasureRoom)) {
             this.treasureRoom = treasureRoom;
-            if(this.message == null){
+            if (this.message == null) {
                 this.getMessage();
             }
         }
     }
-    private void getMessage(){
-        if (this.treasureRoom.getChestItem() != null){
+    private void getMessage() {
+        if (this.treasureRoom.getChestItem() != null) {
             this.message = this.treasureRoom.getMessageText();
-            this.messageDisplayStart = TimeUtils.millis();
-        }else{
-            this.message = "This chest is empty";
             this.messageDisplayStart = TimeUtils.millis();
         }
     }

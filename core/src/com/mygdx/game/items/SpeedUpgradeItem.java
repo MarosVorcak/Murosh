@@ -21,7 +21,7 @@ public class SpeedUpgradeItem implements Item {
 
     @Override
     public void applyEffect(Player player) {
-        if (player.getSpeed() < 400){
+        if (player.getSpeed() < 400) {
             player.setSpeed(player.getSpeed() + this.ammount);
         }
     }

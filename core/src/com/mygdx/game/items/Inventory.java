@@ -16,15 +16,15 @@ public class Inventory {
     }
     public Item getItem(ItemType type) {
         for (Item item : this.items) {
-            if (item.getType() == type){
+            if (item.getType() == type) {
                 return item;
             }
         }
         return null;
     }
     public boolean hasItem(ItemType type) {
-        for (Item item : items) {
-            if(item.getType() == type) {
+        for (Item item : this.items) {
+            if (item.getType() == type) {
                 return true;
             }
         }
@@ -32,7 +32,7 @@ public class Inventory {
     }
     public void removeItem(ItemType type) {
         Iterator<Item> iterator = this.items.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Item item = iterator.next();
             if (item.getType() == type) {
                 iterator.remove();

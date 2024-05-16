@@ -2,7 +2,6 @@ package com.mygdx.game.dungeon;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.mygdx.game.items.Defensivetem;
 import com.mygdx.game.items.ItemType;

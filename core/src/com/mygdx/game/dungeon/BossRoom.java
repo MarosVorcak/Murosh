@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.entities.Boss;
 import com.mygdx.game.entities.Enemy;
 
-import java.util.Iterator;
-
 public class BossRoom extends Room {
     private boolean bossDefeated;
 

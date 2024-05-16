@@ -1,6 +1,5 @@
 package com.mygdx.game.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -33,12 +32,12 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float v) {
-        Gdx.gl.glClearColor(129/255f, 11/255f, 35/255f, 1);
+        Gdx.gl.glClearColor(129 / 255f, 11 / 255f, 35 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             this.mainGame.setScreen(new GameScreen(this.mainGame));
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
         this.mainGame.getBatch().begin();

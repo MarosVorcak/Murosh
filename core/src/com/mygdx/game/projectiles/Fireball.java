@@ -7,7 +7,6 @@ public class Fireball extends Projectile {
     public Fireball(float x, float y, Texture texture, float speed, float angle) {
         super(x, y, texture, speed);
         this.angle = angle;
-//        System.out.println(angle);
     }
 
     @Override
