@@ -50,6 +50,8 @@ public class DungeonGenerator {
                         previous = this.connectRooms(current, previous);
                     } else {
                         current = new TrapRoom();
+                        TrapRoom currentTrap = (TrapRoom)current;
+                        currentTrap.setDetectorForManager(this.detector);
                         previous = this.connectRooms(current, previous);
                     }
                 } else {

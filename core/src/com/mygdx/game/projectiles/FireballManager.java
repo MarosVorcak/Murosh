@@ -10,13 +10,19 @@ import java.util.Iterator;
 
 public class FireballManager {
     private final ArrayList<Fireball> fireballs;
-    private final Detection detector;
+    private Detection detector;
     public static final float FIREBALL_COOLDOWN = 3;
     private float fireballTimer;
     private final float fireballSpeed;
 
     public FireballManager(Detection detector, float fireballSpeed) {
         this.detector = detector;
+        this.fireballs = new ArrayList<Fireball>();
+        this.fireballTimer = 1;
+        this.fireballSpeed = fireballSpeed;
+    }
+
+    public FireballManager(float fireballSpeed) {
         this.fireballs = new ArrayList<Fireball>();
         this.fireballTimer = 1;
         this.fireballSpeed = fireballSpeed;
@@ -28,6 +34,11 @@ public class FireballManager {
             this.fireballs.add(new Fireball(spawnX, spawnY, new Texture("Projectiles/fireball.png"), this.fireballSpeed, angle));
         }
     }
+
+    public void setDetector(Detection detector) {
+        this.detector = detector;
+    }
+
     public void renderAndUpdateFireballs(float deltaTime, SpriteBatch batch, Player player, int dmg) {
         Iterator<Fireball> iterator = this.fireballs.iterator();
         while (iterator.hasNext()) {

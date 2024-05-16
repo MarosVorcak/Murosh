@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="30">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="32">
  <tileset firstgid="1" source="tiles/atlas_floor- 32x32.tsx"/>
  <tileset firstgid="50" source="tiles/Dungeon_Tileset32x32.tsx"/>
  <tileset firstgid="150" source="tiles/big_chest.tsx"/>
@@ -84,7 +84,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Doors">
+ <objectgroup id="4" name="Doors" visible="0">
   <object id="13" x="482.787" y="30.0357" width="61.625" height="32"/>
   <object id="14" x="482.255" y="671.298" width="61.625" height="32"/>
  </objectgroup>
@@ -104,7 +104,7 @@
   <object id="28" x="640.242" y="160.674" width="32" height="32"/>
   <object id="29" x="608.174" y="128.826" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="7" name="SpecialObjects">
+ <objectgroup id="7" name="SpecialObjects" visible="0">
   <object id="15" x="479.25" y="319.667" width="64" height="64"/>
  </objectgroup>
 </map>

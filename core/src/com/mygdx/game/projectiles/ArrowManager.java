@@ -74,6 +74,9 @@ public class ArrowManager {
         }
     }
 
+    public void clearArrowManager() {
+        this.arrows.clear();
+    }
 
     public void renderArrowHitboxes() {
         for (Arrow arrow : this.arrows) {

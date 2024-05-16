@@ -54,6 +54,7 @@ public class GameScreen implements Screen {
         this.ui.renderUI(this.game.getBatch());
         this.game.getBatch().end();
         if (this.dungeon.swithcedRooms()) {
+            this.dungeon.getCurrentRoom().getPlayer().getArrowManager().clearArrowManager();
             this.detection.setMap(this.dungeon.getCurrentRoom().getMap());
             this.mapRenderer.setMap(this.dungeon.getCurrentRoom().getMap());
         }

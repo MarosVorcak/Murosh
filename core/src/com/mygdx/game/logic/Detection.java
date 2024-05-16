@@ -40,10 +40,12 @@ public class Detection {
     }
 
     public boolean wallCollision(Rectangle rectangle) {
-        for (MapObject object : this.map.getLayers().get("Collision").getObjects()) {
-            if (object instanceof RectangleMapObject) {
-                if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
-                    return true;
+        if (this.doesLayerExist("Collision")) {
+            for (MapObject object : this.map.getLayers().get("Collision").getObjects()) {
+                if (object instanceof RectangleMapObject) {
+                    if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
+                        return true;
+                    }
                 }
             }
         }
@@ -51,17 +53,19 @@ public class Detection {
     }
 
     public boolean doorCollision(Rectangle rectangle) {
-        for (MapObject object : this.map.getLayers().get("Doors").getObjects()) {
-            if (object instanceof RectangleMapObject) {
-                if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
-                    return true;
+        if(this.doesLayerExist("Doors")) {
+            for (MapObject object : this.map.getLayers().get("Doors").getObjects()) {
+                if (object instanceof RectangleMapObject) {
+                    if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
     public boolean dangerObjectCollision(Rectangle rectangle) {
-        if (this.map.getLayers().get("DangerObjects") != null) {
+        if (this.doesLayerExist("DangerObjects")) {
             for (MapObject object : this.map.getLayers().get("DangerObjects").getObjects()) {
                 if (object instanceof RectangleMapObject) {
                     if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
@@ -73,7 +77,7 @@ public class Detection {
         return false;
     }
     public boolean specialObjectCollision(Rectangle rectangle) {
-        if (this.map.getLayers().get("SpecialObjects") != null) {
+        if (this.doesLayerExist("SpecialObjects")) {
             for (MapObject object : this.map.getLayers().get("SpecialObjects").getObjects()) {
                 if (object instanceof RectangleMapObject) {
                     if (this.rectangleToRectangle(((RectangleMapObject)object).getRectangle(), rectangle)) {
@@ -83,6 +87,9 @@ public class Detection {
             }
         }
         return false;
+    }
+    private boolean doesLayerExist(String layerName){
+        return this.map.getLayers().get(layerName) != null;
     }
 }
 
