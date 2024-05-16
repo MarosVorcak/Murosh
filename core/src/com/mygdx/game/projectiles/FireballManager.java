@@ -11,25 +11,27 @@ import java.util.Iterator;
 public class FireballManager {
     private final ArrayList<Fireball> fireballs;
     private Detection detector;
-    public static final float FIREBALL_COOLDOWN = 3;
+    private final float fireballCooldown;
     private float fireballTimer;
     private final float fireballSpeed;
 
-    public FireballManager(Detection detector, float fireballSpeed) {
+    public FireballManager(Detection detector, float fireballSpeed, float fireballCooldown) {
         this.detector = detector;
         this.fireballs = new ArrayList<Fireball>();
         this.fireballTimer = 1;
         this.fireballSpeed = fireballSpeed;
+        this.fireballCooldown = fireballCooldown;
     }
 
-    public FireballManager(float fireballSpeed) {
+    public FireballManager(float fireballSpeed, float fireballCooldown) {
         this.fireballs = new ArrayList<Fireball>();
         this.fireballTimer = 1;
         this.fireballSpeed = fireballSpeed;
+        this.fireballCooldown = fireballCooldown;
     }
     public void shootFireballs(float spawnX, float spawnY, float angle, float deltaTime) {
         this.fireballTimer += deltaTime;
-        if (this.fireballTimer >= FIREBALL_COOLDOWN) {
+        if (this.fireballTimer >= this.fireballCooldown) {
             this.fireballTimer = 0;
             this.fireballs.add(new Fireball(spawnX, spawnY, new Texture("Projectiles/fireball.png"), this.fireballSpeed, angle));
         }
@@ -56,6 +58,6 @@ public class FireballManager {
         }
     }
     public boolean isFireballOnCD() {
-        return this.fireballTimer < FIREBALL_COOLDOWN;
+        return this.fireballTimer < this.fireballCooldown;
     }
 }

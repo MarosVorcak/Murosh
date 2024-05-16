@@ -22,7 +22,7 @@ public class Player extends Entity {
     private int maxHp;
     private final Inventory inventory;
     public Player(float x, float y, Detection detector) {
-        super(new Texture("Entities/player.png"), x, y, 100, 2000, detector, 200);
+        super(new Texture("Entities/player.png"), x, y, 100, 25, detector, 200);
         this.maxHp = this.getHp();
         this.sprite = new Sprite(this.getTexture());
         this.arrowManager = new ArrowManager(detector);
@@ -77,10 +77,10 @@ public class Player extends Entity {
         this.timeBetweenHits += deltaTime;
         if (this.timeBetweenHits >= INVINCIBLITY_TIME) {
             this.timeBetweenHits = 0;
-            if(this.inventory.hasItem(ItemType.DAMAGE_SHIELD)){
-                Defensivetem cloak = (Defensivetem) this.inventory.getItem(ItemType.DAMAGE_SHIELD);
+            if (this.inventory.hasItem(ItemType.DAMAGE_SHIELD)) {
+                Defensivetem cloak = (Defensivetem)this.inventory.getItem(ItemType.DAMAGE_SHIELD);
                 this.setHp(this.getHp() - cloak.calculateDmg(dmg));
-            }else{
+            } else {
                 this.setHp(this.getHp() - dmg);
             }
         }

@@ -12,7 +12,7 @@ public class Shaman extends Enemy {
     public Shaman(float x, float y, Detection detector) {
         super(new Texture("Entities/shaman.png"), x, y, 120, 20, detector, 80);
         this.getHitboxRectangle().set(x + 16, y, this.getTexture().getWidth() - 16, this.getTexture().getHeight() - 32);
-        this.fireballManager = new FireballManager(this.getDetector(), 250);
+        this.fireballManager = new FireballManager(this.getDetector(), 250, 3);
 
     }
 

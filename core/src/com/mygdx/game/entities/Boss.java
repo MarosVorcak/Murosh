@@ -17,7 +17,7 @@ public class Boss extends Enemy {
 
     public Boss(float x, float y, Detection detector) {
         super(new Texture("Entities/boss.png"), x, y, 300, 40, detector, 100);
-        this.fireballManager = new FireballManager(this.getDetector(), 200);
+        this.fireballManager = new FireballManager(this.getDetector(), 200, BARRAGE_COOLDOWN);
         this.barrageTimer = 0;
         this.lunger = new Lunger(1, 0.6f, 300, 12, this, this.getSpeed() * 16);
     }
@@ -43,7 +43,7 @@ public class Boss extends Enemy {
                 float angleSepartion = (float)(Math.PI / 4);
                 for (int i = 0; i < 8; i++) {
                     float fireballAngle = angleSepartion * i;
-                    this.fireballManager.shootFireballs(this.getX() + (float)this.getTexture().getWidth() / 2, this.getY() + (float)this.getTexture().getHeight() / 4, fireballAngle, 3);
+                    this.fireballManager.shootFireballs(this.getX() + (float)this.getTexture().getWidth() / 2, this.getY() + (float)this.getTexture().getHeight() / 4, fireballAngle, BARRAGE_COOLDOWN);
                 }
                 this.barrageTimer = 0;
             }

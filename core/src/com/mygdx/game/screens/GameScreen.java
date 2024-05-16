@@ -38,11 +38,11 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float deltaTime) {
-        if(!this.dungeon.getCurrentRoom().getPlayer().isAlive()){
+        if (!this.dungeon.getCurrentRoom().getPlayer().isAlive()) {
             this.game.setScreen(new EndGameScreen(this.game, false));
             return;
         }
-        if(this.dungeon.getCurrentRoom() instanceof BossRoom && this.dungeon.getCurrentRoom().checkIfRoomIsExitable()){
+        if (this.dungeon.getCurrentRoom() instanceof BossRoom && this.dungeon.getCurrentRoom().checkIfRoomIsExitable()) {
             this.game.setScreen(new EndGameScreen(this.game, true));
             return;
         }
@@ -59,7 +59,7 @@ public class GameScreen implements Screen {
             this.mapRenderer.setMap(this.dungeon.getCurrentRoom().getMap());
         }
         this.dungeon.objectInteraction(deltaTime);
-        if(this.dungeon.getCurrentRoom() instanceof TreasureRoom){
+        if (this.dungeon.getCurrentRoom() instanceof TreasureRoom) {
             this.ui.setTreasureRoom((TreasureRoom)this.dungeon.getCurrentRoom());
         }
 //        this.dungeon.getCurrentRoom().renderHitboxes();

@@ -121,22 +121,22 @@
     <property name="direction" value="right"/>
    </properties>
   </object>
-  <object id="33" x="941.333" y="478.848" width="16" height="16">
+  <object id="33" x="929.333" y="491.515" width="16" height="16">
    <properties>
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="34" x="891.917" y="66.9167" width="16" height="16">
+  <object id="34" x="892.584" y="77.5834" width="16" height="16">
    <properties>
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="35" x="714.75" y="65.25" width="16" height="16">
+  <object id="35" x="715.417" y="76.5833" width="16" height="16">
    <properties>
     <property name="direction" value="down"/>
    </properties>
   </object>
-  <object id="36" x="568.75" y="65.5" width="16" height="16">
+  <object id="36" x="568.75" y="80.1667" width="16" height="16">
    <properties>
     <property name="direction" value="down"/>
    </properties>

@@ -9,22 +9,21 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.MainGame;
-import jdk.tools.jmod.Main;
 
 public class EndGameScreen implements Screen {
-    private Texture image;
-    private String message;
+    private final Texture image;
+    private final String message;
     private final BitmapFont font;
     private final MainGame mainGame;
 
     public EndGameScreen(MainGame game, boolean victory) {
         this.mainGame = game;
         this.font = new BitmapFont(Gdx.files.internal("font/font.fnt"));
-        if(!victory){
+        if (!victory) {
             this.image = new Texture("UI/you_died.png");
             this.message = "Press SPACE to try again\n" +
                     "Press ESCAPE to quit the game";
-        }else{
+        } else {
             this.image = new Texture("UI/you_win.png");
             this.message = "Press SPACE to beat another dungeon\n" +
                     "Press ESCAPE to quit the game";
@@ -38,10 +37,10 @@ public class EndGameScreen implements Screen {
 
     @Override
     public void render(float v) {
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             this.mainGame.setScreen(new GameScreen(this.mainGame));
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
         this.mainGame.getBatch().begin();
