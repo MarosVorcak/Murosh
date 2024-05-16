@@ -22,7 +22,7 @@ public class Player extends Entity {
     private int maxHp;
     private final Inventory inventory;
     public Player(float x, float y, Detection detector) {
-        super(new Texture("Entities/player.png"), x, y, 100, 2000, detector, 200);
+        super(new Texture("Entities/player.png"), x, y, 100, 20, detector, 200);
         this.maxHp = this.getHp();
         this.sprite = new Sprite(this.getTexture());
         this.arrowManager = new ArrowManager(detector);
