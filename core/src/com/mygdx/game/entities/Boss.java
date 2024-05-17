@@ -6,6 +6,16 @@ import com.mygdx.game.logic.Detection;
 import com.mygdx.game.logic.Lunger;
 import com.mygdx.game.projectiles.FireballManager;
 
+/**
+ * Trieda Boss rozširuje triedu Enemy a je zodpovedná za vytvorenie a správu bossa.
+ *
+ * Importy:
+ * import com.badlogic.gdx.graphics.Texture; // Pre prácu s textúrami
+ * import com.badlogic.gdx.graphics.g2d.SpriteBatch; // Pre prácu s dávkami sprajtov
+ * import com.mygdx.game.logic.Detection; // Pre prácu s detekciou
+ * import com.mygdx.game.logic.Lunger; // Pre prácu s Lunger
+ * import com.mygdx.game.projectiles.FireballManager; // Pre prácu s manažérom ohnivých gulí
+ */
 public class Boss extends Enemy {
     private static final float BARRAGE_COOLDOWN = 3;
     private float barrageTimer;
@@ -14,7 +24,13 @@ public class Boss extends Enemy {
     private float lastPlayerX;
     private float lastPlayerY;
 
-
+    /**
+     * Konštruktor pre vytvorenie bossa.
+     *
+     * @param x float - x-ová pozícia bossa
+     * @param y float - y-ová pozícia bossa
+     * @param detector Detection - detektor pre detekciu kolízií
+     */
     public Boss(float x, float y, Detection detector) {
         super(new Texture("Entities/boss.png"), x, y, 300, 40, detector, 100);
         this.fireballManager = new FireballManager(this.getDetector(), 200, BARRAGE_COOLDOWN);
@@ -22,6 +38,12 @@ public class Boss extends Enemy {
         this.lunger = new Lunger(1, 0.6f, 300, 12, this, this.getSpeed() * 16);
     }
 
+    /**
+     * Metóda update slúži na aktualizáciu bossa.
+     *
+     * @param player Player - hráč
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     */
     @Override
     public void update(Player player, float deltaTime) {
         if (!this.lunger.isLunging()) {
@@ -36,6 +58,13 @@ public class Boss extends Enemy {
         }
     }
 
+    /**
+     * Metóda fireballBarage slúži na vystrelenie ohnivých gúľ.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     * @param player Player - hráč
+     * @param batch SpriteBatch - dávka sprajtov
+     */
     public void fireballBarage(float deltaTime, Player player, SpriteBatch batch) {
         if (this.lunger.isLungeOnCooldown()) {
             this.barrageTimer += deltaTime;

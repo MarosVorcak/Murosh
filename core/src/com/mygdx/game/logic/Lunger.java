@@ -3,6 +3,13 @@ package com.mygdx.game.logic;
 import com.badlogic.gdx.math.MathUtils;
 import com.mygdx.game.entities.Enemy;
 
+/**
+ * Trieda Lunger je zodpovedná za mechaniku výpadu nepriateľov.
+ *
+ * Importy:
+ * import com.badlogic.gdx.math.MathUtils; // Pre prácu s matematickými funkciemi
+ * import com.mygdx.game.entities.Enemy; // Pre prácu s nepriateľmi
+ */
 public class Lunger {
     private final float chargeDuration;
     private final float shakeAmount;
@@ -15,7 +22,16 @@ public class Lunger {
     private float timeBetweenLunges;
     private boolean isLunging;
 
-
+    /**
+     * Konštruktor triedy Lunger.
+     *
+     * @param chargeDuration Dĺžka nabíjania výpadu.
+     * @param shakeAmount Množstvo trasenia počas nabíjania.
+     * @param lungeDistance Dĺžka výpadu.
+     * @param lungeCooldown Časový interval medzi výpadmi.
+     * @param enemy Nepriateľ, ktorý vykonáva výpad.
+     * @param lungeSpeed Rýchlosť výpadu.
+     */
     public Lunger(float chargeDuration, float shakeAmount, float lungeDistance, float lungeCooldown, Enemy enemy, float lungeSpeed) {
         this.chargeDuration = chargeDuration;
         this.shakeAmount = shakeAmount;
@@ -28,6 +44,13 @@ public class Lunger {
         this.isLunging = false;
     }
 
+    /**
+     * Metóda update slúži na aktualizáciu výpadu nepriateľa.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     * @param playerX X-ová pozícia hráča.
+     * @param playerY Y-ová pozícia hráča.
+     */
     public void update(float deltaTime, float playerX, float playerY) {
         if (!this.isLungeOnCooldown()) {
             if (this.chargeUp(deltaTime)) {
@@ -40,6 +63,12 @@ public class Lunger {
         }
     }
 
+    /**
+     * Metóda chargeUp slúži na nabíjanie výpadu.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     * @return True, ak je nabíjanie dokončené, inak false.
+     */
     private boolean chargeUp(float deltaTime) {
         this.chargeUpTimer += deltaTime;
         if (this.chargeUpTimer <= this.chargeDuration) {
@@ -53,6 +82,14 @@ public class Lunger {
         }
     }
 
+    /**
+     * Metóda lunge slúži na vykonanie výpadu.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     * @param lungeTargetX X-ová pozícia cieľa výpadu.
+     * @param lungeTargetY Y-ová pozícia cieľa výpadu.
+     * @return True, ak je výpad dokončený, inak false.
+     */
     private boolean lunge(float deltaTime, float lungeTargetX, float lungeTargetY) {
         this.isLunging = true;
         float oldX = this.enemy.getX();
@@ -72,14 +109,29 @@ public class Lunger {
         }
     }
 
+    /**
+     * Metóda isLungeOnCooldown slúži na zistenie, či je výpad na cooldowne.
+     *
+     * @return True, ak je výpad na cooldowne, inak false.
+     */
     public boolean isLungeOnCooldown() {
         return this.timeBetweenLunges < this.lungeCooldown;
     }
 
+    /**
+     * Metóda addToTimeBetweenLunges slúži na pridanie času k času medzi výpadmi.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     */
     public void addToTimeBetweenLunges(float deltaTime) {
         this.timeBetweenLunges += deltaTime;
     }
 
+    /**
+     * Metóda isLunging slúži na zistenie, či sa vykonáva výpad.
+     *
+     * @return True, ak sa vykonáva výpad, inak false.
+     */
     public boolean isLunging() {
         return this.isLunging;
     }

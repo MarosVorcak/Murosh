@@ -7,6 +7,19 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.mygdx.game.dungeon.TreasureRoom;
 import com.mygdx.game.entities.Player;
 
+/**
+ * Trieda UI je zodpovedná za vykreslenie užívateľského rozhrania na obrazovke.
+ * Zobrazuje informácie o hráčovi, ako sú HP, ATK a SPEED.
+ * Zobrazuje taktiež správu, ktorá sa zobrazí, ak hráč vstúpi do miestnosti s pokladom.
+ *
+ * Importy:
+ * import com.badlogic.gdx.Gdx;
+ * import com.badlogic.gdx.graphics.g2d.BitmapFont;
+ * import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+ * import com.badlogic.gdx.utils.TimeUtils;
+ * import com.mygdx.game.dungeon.TreasureRoom;
+ * import com.mygdx.game.entities.Player;
+ */
 public class UI {
     private final Player player;
     private final BitmapFont font;
@@ -15,11 +28,21 @@ public class UI {
     public static final long MESSAGE_DURATION = 2000;
     private TreasureRoom treasureRoom;
 
+    /**
+     * Konštruktor triedy UI.
+     *
+     * @param player Objekt hráča, ktorého informácie sa majú zobraziť.
+     */
     public UI(Player player) {
         this.player = player;
         this.font = new BitmapFont(Gdx.files.internal("font/font.fnt"), false);
     }
 
+    /**
+     * Metóda na vykreslenie užívateľského rozhrania.
+     *
+     * @param batch Objekt SpriteBatch, ktorý sa používa na vykreslenie.
+     */
     public void renderUI(SpriteBatch batch) {
         this.font.setColor(1, 1, 1, 1);
         this.font.getData().setScale(0.7F);
@@ -44,7 +67,11 @@ public class UI {
 
     }
 
-
+    /**
+     * Nastaví miesnot s pokladom, ktorá sa má zobraziť v užívateľskom rozhraní.
+     *
+     * @param treasureRoom Objekt pokladnice, ktorý sa má zobraziť.
+     */
     public void setTreasureRoom(TreasureRoom treasureRoom) {
         if (this.treasureRoom == null || !this.treasureRoom.equals(treasureRoom)) {
             this.treasureRoom = treasureRoom;

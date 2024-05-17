@@ -11,6 +11,21 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.MainGame;
 import com.mygdx.game.logic.Detection;
 
+/**
+ * Trieda GameScreen je zodpovedná za vytvorenie a správu hernej obrazovky.
+ *
+ * Importy:
+ * import com.mygdx.game.dungeon.BossRoom; // Pre prácu s BossRoom
+ * import com.mygdx.game.dungeon.Dungeon; // Pre prácu s Dungeon
+ * import com.mygdx.game.dungeon.TreasureRoom; // Pre prácu s TreasureRoom
+ * import com.mygdx.game.entities.Player; // Pre prácu s Player
+ * import com.badlogic.gdx.Gdx; // Pre prácu s libGDX knižnicou
+ * import com.badlogic.gdx.Screen; // Pre vytvorenie obrazovky hry
+ * import com.badlogic.gdx.graphics.OrthographicCamera; // Pre prácu s OrthographicCamera
+ * import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer; // Pre prácu s OrthogonalTiledMapRenderer
+ * import com.mygdx.game.MainGame; // Pre prácu s hlavnou hrou
+ * import com.mygdx.game.logic.Detection; // Pre prácu s Detection
+ */
 public class GameScreen implements Screen {
     private final OrthographicCamera camera;
     private final OrthogonalTiledMapRenderer mapRenderer;
@@ -19,7 +34,11 @@ public class GameScreen implements Screen {
     private final Dungeon dungeon;
     private final UI ui;
 
-
+    /**
+     * Konštruktor triedy GameScreen.
+     *
+     * @param game Hlavná hra.
+     */
     public GameScreen(MainGame game) {
         this.game = game;
         this.camera = new OrthographicCamera();
@@ -36,6 +55,12 @@ public class GameScreen implements Screen {
     public void show() {
     }
 
+    /**
+     * Metóda na vykreslenie hernej obrazovky.
+     *
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     */
     @Override
     public void render(float deltaTime) {
         if (!this.dungeon.getCurrentRoom().getPlayer().isAlive()) {

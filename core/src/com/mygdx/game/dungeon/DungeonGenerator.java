@@ -12,13 +12,37 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * Trieda DungeonGenerator je zodpovedná za generovanie celého dungeonu.
+ *
+ * Importy:
+ * import com.badlogic.gdx.maps.MapObject;
+ * import com.badlogic.gdx.maps.objects.RectangleMapObject;
+ * import com.mygdx.game.entities.Boss;
+ * import com.mygdx.game.entities.Enemy;
+ * import com.mygdx.game.entities.Goblin;
+ * import com.mygdx.game.entities.Shaman;
+ * import com.mygdx.game.entities.Slime;
+ * import com.mygdx.game.logic.Detection;
+ * import java.util.ArrayList;
+ * import java.util.Iterator;
+ * import java.util.Random;
+ */
 public class DungeonGenerator {
     private final Detection detector;
 
+/**
+     * Konštruktor pre triedu DungeonGenerator, ktorý inicializuje detektor kolízií.
+     * @param detector detektor kolízií
+     */
     public DungeonGenerator(Detection detector) {
         this.detector = detector;
     }
 
+    /**
+     * Metóda generateDungeon vygeneruje dungeon s miestnosťami a nepriateľmi.
+     * @return miestnosť s dungeonom
+     */
     public Room generateDungeon() {
         SpawnRoom spawn = new SpawnRoom();
         Room previous = spawn;
@@ -63,16 +87,38 @@ public class DungeonGenerator {
         }
         return spawn;
     }
+
+    /**
+     * Metóda generateNormalRoom generuje normálnu miestnosť.
+     *
+     * @param random Random - generátor náhodných čísel
+     * @return Room - normálna miestnosť
+     */
     private Room generateNormalRoom(Random random) {
         int templateNumber = random.nextInt(4) + 1;
         return new Room("Maps/normal_room" + templateNumber + ".tmx");
     }
+
+    /**
+     * Metóda connectRooms spojí dve miestnosti.
+     *
+     * @param current Room - aktuálna miestnosť
+     * @param previous Room - predchádzajúca miestnosť
+     * @return Room - predchádzajúca miestnosť
+     */
     private Room connectRooms(Room current, Room previous) {
         current.connectRoom(previous);
         previous.connectRoom(current);
         previous = current;
         return previous;
     }
+
+    /**
+     * Metóda spawnEnemies vygeneruje nepriateľov v miestnosti.
+     *
+     * @param room Room - miestnosť
+     * @param random Random - generátor náhodných čísel
+     */
     private void spawnEnemies(Room room, Random random) {
         Iterator<MapObject> iterator = room.getMap().getLayers().get("Spawns").getObjects().iterator();
         ArrayList<Enemy> spawnedEnemies = new ArrayList<Enemy>();
@@ -139,6 +185,14 @@ public class DungeonGenerator {
             }
         }
     }
+
+    /**
+     * Metóda checkIfEnemyExists zistí, či v miestnosti existuje nepriateľ.
+     *
+     * @param enemyType int - typ nepriateľa
+     * @param enemies ArrayList<Enemy> - zoznam nepriateľov
+     * @return boolean - true, ak nepriateľ existuje, inak false
+     */
     private boolean checkIfEnemyExists(int enemyType, ArrayList<Enemy>enemies) {
         if (enemies.isEmpty()) {
             return false;
