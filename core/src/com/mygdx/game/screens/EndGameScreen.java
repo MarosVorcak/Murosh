@@ -10,12 +10,31 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.MainGame;
 
+/**
+ * Trieda EndGameScreen je zodpovedná za vytvorenie a správu koncovej obrazovky hry.
+ *
+ * Importy:
+ * import com.badlogic.gdx.Gdx; // Pre prácu s libGDX knižnicou
+ * import com.badlogic.gdx.Input; // Pre prácu s vstupmi (klávesnicou, myšou atď.)
+ * import com.badlogic.gdx.Screen; // Pre vytvorenie obrazovky hry
+ * import com.badlogic.gdx.graphics.Color; // Pre prácu s farbami
+ * import com.badlogic.gdx.graphics.Texture; // Pre prácu s textúrami
+ * import com.badlogic.gdx.graphics.g2d.BitmapFont; // Pre prácu s fontmi
+ * import com.badlogic.gdx.graphics.g2d.GlyphLayout; // Pre prácu s rozložením textu
+ * import com.mygdx.game.MainGame; // Pre prácu s hlavnou hrou
+ */
 public class EndGameScreen implements Screen {
     private final Texture image;
     private final String message;
     private final BitmapFont font;
     private final MainGame mainGame;
 
+    /**
+     * Konštruktor triedy EndGameScreen.
+     *
+     * @param game Hlavná hra.
+     * @param victory Informácia o výhre alebo prehre.
+     */
     public EndGameScreen(MainGame game, boolean victory) {
         this.mainGame = game;
         this.font = new BitmapFont(Gdx.files.internal("font/font.fnt"));
@@ -35,8 +54,13 @@ public class EndGameScreen implements Screen {
 
     }
 
+    /**
+     * Metóda na vykreslenie koncovej obrazovky.
+     *
+     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
+     */
     @Override
-    public void render(float v) {
+    public void render(float deltaTime) {
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             this.mainGame.setScreen(new GameScreen(this.mainGame));
         }
