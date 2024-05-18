@@ -41,7 +41,7 @@ public class DungeonGenerator {
 
     /**
      * Metóda generateDungeon vygeneruje dungeon s miestnosťami a nepriateľmi.
-     * @return miestnosť s dungeonom
+     * @return spawn miesnost s ktorej sa dungeon zacina
      */
     public Room generateDungeon() {
         SpawnRoom spawn = new SpawnRoom();

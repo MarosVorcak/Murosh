@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="14">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="32" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="16">
  <tileset firstgid="1" source="tiles/atlas_floor- 32x32.tsx"/>
  <tileset firstgid="50" source="tiles/Dungeon_Tileset32x32.tsx"/>
  <layer id="1" name="Floor" width="32" height="23">
@@ -90,6 +90,8 @@
   <object id="4" x="543.433" y="670.601" width="449.25" height="32"/>
   <object id="5" x="960.379" y="62.7976" width="32" height="607.188"/>
   <object id="6" x="29.8788" y="63.2036" width="32" height="607.188"/>
+  <object id="14" x="481.142" y="681.064" width="61.625" height="27.0625"/>
+  <object id="15" x="480.869" y="26.5398" width="61.625" height="27.0625"/>
  </objectgroup>
  <objectgroup id="5" name="Doors">
   <object id="9" x="480.734" y="30.783" width="61.625" height="32"/>
