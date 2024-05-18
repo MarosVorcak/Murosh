@@ -22,7 +22,6 @@ public class ArrowManager {
         this.betweenShotTimer = 0.8f;
     }
     public void shootArrows(float deltaTime, char direction, float playerSize, float playerX, float playerY) {
-        this.betweenShotTimer += deltaTime;
         switch (direction) {
             case 'U':
                 if (this.betweenShotTimer >= TIME_BETWEEN_SHOTS) {
@@ -55,6 +54,7 @@ public class ArrowManager {
     }
 
     public void updateAndRenderArrows(float deltaTime, SpriteBatch batch, ArrayList<Enemy>enemies, int playerDMG) {
+        this.betweenShotTimer += deltaTime;
         Iterator<Arrow> iterator = this.arrows.iterator();
         while (iterator.hasNext()) {
             Arrow arrow = iterator.next();
