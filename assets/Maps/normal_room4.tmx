@@ -83,15 +83,15 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Collisions">
+ <objectgroup id="4" name="Collision">
   <object id="1" x="30.2319" y="31.1194" width="449.25" height="32"/>
   <object id="2" x="542.858" y="31.8694" width="449.25" height="32"/>
   <object id="3" x="30.8067" y="670.958" width="449.25" height="32"/>
   <object id="4" x="543.433" y="671.708" width="449.25" height="32"/>
   <object id="5" x="960.379" y="63.904" width="32" height="607.188"/>
   <object id="6" x="29.8784" y="64.31" width="32" height="607.188"/>
-  <object id="26" x="480.953" y="22.3574" width="61.625" height="32"/>
-  <object id="27" x="480.421" y="661.62" width="61.625" height="32"/>
+  <object id="26" x="480.408" y="23.6301" width="61.625" height="32"/>
+  <object id="27" x="481.512" y="683.802" width="61.625" height="32"/>
  </objectgroup>
  <objectgroup id="5" name="Doors">
   <object id="7" x="480.734" y="31.7826" width="61.625" height="32"/>

@@ -84,7 +84,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Doors" visible="0">
+ <objectgroup id="4" name="Doors">
   <object id="13" x="482.787" y="30.0357" width="61.625" height="32"/>
   <object id="14" x="482.255" y="671.298" width="61.625" height="32"/>
  </objectgroup>

@@ -90,7 +90,7 @@
   <object id="4" x="543.433" y="670.601" width="449.25" height="32"/>
   <object id="5" x="960.379" y="62.7976" width="32" height="607.188"/>
   <object id="6" x="29.8788" y="63.2036" width="32" height="607.188"/>
-  <object id="14" x="481.142" y="681.064" width="61.625" height="27.0625"/>
+  <object id="14" x="480.687" y="684.064" width="61.625" height="27.0625"/>
   <object id="15" x="480.869" y="26.5398" width="61.625" height="27.0625"/>
  </objectgroup>
  <objectgroup id="5" name="Doors">

@@ -50,7 +50,6 @@ public class TreasureRoom extends Room {
             if (detector.specialObjectCollision(this.getPlayer().getHitboxRectangle())) {
                 this.healPlayer();
                 this.getPlayer().getInventory().addItem(this.chestItem);
-
                 if (!(this.chestItem instanceof Defensivetem)) {
                     this.getPlayer().getInventory().applyItem(this.chestItem.getType(), this.getPlayer());
                 }
@@ -109,7 +108,7 @@ public class TreasureRoom extends Room {
 
     /**
      * Metóda generateStatItem vygeneruje predmet na zlepšenie schopnosti.
-     * @return špeciálny predmet
+     * @return stat predmet
      */
     private Item generateStatItem() {
         ItemType randomItem = ItemType.values()[new Random().nextInt(3)];
