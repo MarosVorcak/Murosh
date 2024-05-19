@@ -53,5 +53,4 @@ public class Slime extends Enemy {
         this.getHitboxRectangle().setPosition(this.getX() + 8, this.getY());
     }
 
-
 }
