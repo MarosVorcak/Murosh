@@ -124,7 +124,7 @@ public class Room {
                 iterator.remove();
             }
             if (enemy.getDetector().rectangleToRectangle(enemy.getHitboxRectangle(), this.player.getHitboxRectangle())) {
-                this.player.takeDMG(enemy.getAtk(), Character.MIN_VALUE, deltaTime);
+                this.player.takeDMG(enemy.getAtk(), Character.MIN_VALUE);
             }
         }
     }
@@ -165,9 +165,9 @@ public class Room {
         if (detector.dangerObjectCollision(this.player.getHitboxRectangle())) {
             if (this.player.getInventory().hasItem(ItemType.IRON_BOOTS)) {
                 Defensivetem item = (Defensivetem)this.player.getInventory().getItem(ItemType.IRON_BOOTS);
-                this.player.takeDMG(item.calculateDmg(15), Character.MIN_VALUE, deltaTime);
+                this.player.takeDMG(item.calculateDmg(15), Character.MIN_VALUE);
             } else {
-                this.player.takeDMG(15, Character.MIN_VALUE, deltaTime);
+                this.player.takeDMG(15, Character.MIN_VALUE);
             }
         }
     }

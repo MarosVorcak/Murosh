@@ -64,6 +64,7 @@ public class Player extends Entity {
      */
     @Override
     public void update(Player player, float deltaTime) {
+        this.timeBetweenHits += deltaTime;
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             this.moveOnY(this.getSpeed() * deltaTime);
         }
@@ -108,11 +109,9 @@ public class Player extends Entity {
      *
      * @param dmg int - počet životov, ktoré hráč stratil
      * @param directionOfAttack char - smer útoku
-     * @param deltaTime float - časový rozdiel od posledného vykresleného snímku
      */
     @Override
-    public void takeDMG(int dmg, char directionOfAttack, float deltaTime) {
-        this.timeBetweenHits += deltaTime;
+    public void takeDMG(int dmg, char directionOfAttack) {
         if (this.timeBetweenHits >= INVINCIBLITY_TIME) {
             this.timeBetweenHits = 0;
             if (this.inventory.hasItem(ItemType.DAMAGE_SHIELD)) {

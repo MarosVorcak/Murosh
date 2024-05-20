@@ -86,9 +86,9 @@ public class TrapRoom extends Room {
         if (detector.dangerObjectCollision(this.getPlayer().getHitboxRectangle())) {
             if (this.getPlayer().getInventory().hasItem(ItemType.IRON_BOOTS)) {
                 Defensivetem item = (Defensivetem)this.getPlayer().getInventory().getItem(ItemType.IRON_BOOTS);
-                this.getPlayer().takeDMG(item.calculateDmg(this.generateDamage()), Character.MIN_VALUE, deltaTime);
+                this.getPlayer().takeDMG(item.calculateDmg(this.generateDamage()), Character.MIN_VALUE);
             } else {
-                this.getPlayer().takeDMG(this.generateDamage(), Character.MIN_VALUE, deltaTime);
+                this.getPlayer().takeDMG(this.generateDamage(), Character.MIN_VALUE);
             }
         }
         if (!this.isKeyPickedUp) {

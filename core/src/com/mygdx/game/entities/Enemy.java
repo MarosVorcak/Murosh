@@ -48,10 +48,9 @@ public class Enemy extends Entity {
      *
      * @param dmg int - počet životov, ktoré nepriateľ stratil
      * @param directionOfAttack char - smer útoku
-     * @param deltaTime Časový rozdiel od posledného vykresleného snímku.
      */
     @Override
-    public void takeDMG(int dmg, char directionOfAttack, float deltaTime) {
+    public void takeDMG(int dmg, char directionOfAttack) {
         this.setHp(this.getHp() - dmg);
         switch (directionOfAttack) {
             case 'U':

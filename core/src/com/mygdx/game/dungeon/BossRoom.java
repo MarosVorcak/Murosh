@@ -40,7 +40,7 @@ public class BossRoom extends Room {
                     this.bossDefeated = true;
                 }
                 if (boss.getDetector().rectangleToRectangle(boss.getHitboxRectangle(), this.getPlayer().getHitboxRectangle())) {
-                    this.getPlayer().takeDMG(boss.getAtk(), Character.MIN_VALUE, deltaTime);
+                    this.getPlayer().takeDMG(boss.getAtk(), Character.MIN_VALUE);
                 }
             }
         }
