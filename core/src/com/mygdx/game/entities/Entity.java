@@ -62,9 +62,8 @@ public abstract class Entity {
      *
      * @param dmg int - počet životov, ktoré entity stratila
      * @param directionOfAttack char - smer útoku
-     * @param deltaTime float - časový rozdiel od posledného vykresleného snímku
      */
-    public abstract void takeDMG(int dmg, char directionOfAttack, float deltaTime);
+    public abstract void takeDMG(int dmg, char directionOfAttack);
 
     /**
      * Metóda isAlive slúži na zistenie, či je entita ešte nažive.

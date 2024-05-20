@@ -64,7 +64,7 @@ public class ArrowManager {
             arrow.render(batch);
             for (Enemy enemy : enemies) {
                 if (this.detector.rectangleToRectangle(enemy.getHitboxRectangle(), arrow.getHitbox().getRectangle())) {
-                    enemy.takeDMG(playerDMG, arrow.getDirection(), deltaTime);
+                    enemy.takeDMG(playerDMG, arrow.getDirection());
                     iterator.remove();
                 }
             }
